@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="hu" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Gyöngy Ház Szépségszalon - Fodrászat, Műköröm, Gyógymasszázs Budapesten.">
+    <title>Gyöngy Ház - Szépségszalon</title>
+    
+    <!-- Betűtípusok -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Ikonok -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Animációk (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Egyedi konfiguráció -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'xs': '375px',
+                    },
+                    colors: {
+                        'dark-bg': '#0f0f0f',
+                        'pastel-purple': '#C4A7E7',
+                        'text-light': '#FFFFFF',
+                        'card-bg': '#FFFFFF',
+                    },
+                    fontFamily: {
+                        'hero': ['"Montserrat"', 'sans-serif'],
+                        'body': ['"Inter"', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'huge': '14vw',
+                        'mobile-huge': '18vw',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Alapbeállítások */
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Canvas a háttérben */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: #0f0f0f;
+        }
+
+        /* Háttér Szöveg (GYÖNGY HÁZ) */
+        .background-text-container {
+            position: fixed;
+            top: 60%; 
+            left: 0; 
+            transform: translateY(-50%);
+            z-index: -1;
+            pointer-events: none;
+            text-align: left;
+            width: 100%;
+            overflow: visible;
+            opacity: 0.04;
+            padding-left: 2vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bg-word {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 20vw; 
+            line-height: 1.1; 
+            color: #ffffff;
+            display: block;
+            text-transform: uppercase;
+            padding-top: 20px;
+        }
+        
+        .bg-word:nth-child(2) {
+            margin-top: 0; 
+        }
+
+        /* "Boxed" Design */
+        .box-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #C4A7E7;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        @media (hover: hover) {
+            .box-card:hover {
+                background: #C4A7E7;
+                color: #ffffff;
+                transform: translateY(-10px);
+                box-shadow: 0 0 30px rgba(196, 167, 231, 0.4);
+                border-color: #ffffff;
+            }
+            .box-card:hover h3, 
+            .box-card:hover p, 
+            .box-card:hover i,
+            .box-card:hover span {
+                color: #ffffff !important;
+            }
+        }
+
+        /* Navigáció */
+        .nav-link {
+            position: relative;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #000;
+            padding: 10px 0;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 5px;
+            left: 0;
+            background-color: #C4A7E7;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Árlista Accordion */
+        details.styled-accordion {
+            border: 1px solid #C4A7E7;
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: -1px;
+            transition: background-color 0.3s ease;
+        }
+        
+        details.styled-accordion summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #000;
+            font-size: 1rem;
+        }
+        
+        details.styled-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.styled-accordion[open] summary {
+            background: #C4A7E7;
+            color: #fff;
+        }
+        
+        details.styled-accordion[open] summary i {
+            color: #fff;
+        }
+
+        details[open] div {
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Táblázat stílus */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .service-table {
+            width: 100%;
+            min-width: 500px;
+        }
+
+        .service-table tr {
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .service-table td {
+            padding: 1rem 0.5rem;
+            white-space: nowrap;
+        }
+        .service-table td:first-child {
+            white-space: normal;
+            min-width: 150px;
+        }
+
+        /* Gomb stílus */
+        .btn-primary {
+            background: #C4A7E7;
+            color: #fff;
+            border: 1px solid #C4A7E7;
+            padding: 0.8rem 2rem;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .btn-primary { width: auto; }
+        }
+        
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        /* Kép hover effekt */
+        .img-hover-zoom {
+            overflow: hidden;
+            border: 1px solid #C4A7E7;
+            position: relative;
+        }
+        .img-hover-zoom img {
+            transition: transform 0.7s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (hover: hover) {
+            .img-hover-zoom:hover img {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Mobil menü animáció */
+        #mobile-menu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform-origin: top;
+        }
+        #mobile-menu.hidden {
+            display: none;
+        }
+
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="font-body text-dark-bg overflow-x-hidden">
+
+    <!-- ANIMÁLT HÁTTÉR CANVAS (Glow) -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- HÁTTÉR SZÖVEG -->
+    <div class="background-text-container">
+        <span class="bg-word">GYÖNGY</span>
+        <span class="bg-word">HÁZ</span>
+    </div>
+
+    <!-- NAVIGÁCIÓ -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-pastel-purple transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#" class="font-hero text-xl md:text-2xl font-black tracking-tighter uppercase text-black hover:text-pastel-purple transition z-50">
+                    GYÖNGY HÁZ
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 lg:space-x-10 items-center">
+                    <a href="#about" class="nav-link text-sm">Rólunk</a>
+                    <a href="#hair" class="nav-link text-sm">Fodrászat</a>
+                    <a href="#nails" class="nav-link text-sm">Műköröm</a>
+                    <a href="#massage" class="nav-link text-sm">Masszázs</a>
+                    <a href="#contact" class="btn-primary text-xs py-3 !w-auto">
+                        Időpontfoglalás
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white/98 border-b border-pastel-purple shadow-2xl flex flex-col items-center py-8 space-y-6 md:hidden z-40 h-screen sm:h-auto">
+            <a href="#about" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Rólunk</a>
+            <a href="#hair" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Fodrászat</a>
+            <a href="#nails" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Műköröm</a>
+            <a href="#massage" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Masszázs</a>
+            <a href="#contact" class="mobile-link btn-primary w-3/4 text-center mt-4">Időpontfoglalás</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative h-screen w-full overflow-hidden flex flex-col justify-end border-b border-pastel-purple bg-white">
+        <!-- Háttérkép -->
+        <div class="absolute inset-0 z-0">
+             <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=1920&auto=format&fit=crop" 
+                  class="w-full h-full object-cover object-[25%] md:object-center"
+                  alt="Gyöngy Ház Hero"
+                  loading="eager">
+        </div>
+
+        <!-- Tartalom -->
+        <div class="relative z-10 w-full px-4 md:px-12 pb-24 md:pb-12">
+            <!-- Felső kis szöveg -->
+            <div class="mb-10 md:mb-20 pl-1 md:pl-2 relative z-20" data-aos="fade-right">
+                <p class="text-pastel-purple text-lg md:text-2xl font-bold tracking-wide font-hero drop-shadow-sm">
+                    A ragyogás itt kezdődik.
+                </p>
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2">
+                    <a href="#contact" class="text-black font-bold underline decoration-2 decoration-pastel-purple underline-offset-4 hover:text-pastel-purple transition uppercase text-sm tracking-widest w-fit">
+                        Foglaljon időpontot
+                    </a>
+                    <span class="text-black text-sm font-bold tracking-widest border-l-0 sm:border-l border-black pl-0 sm:pl-4 hidden sm:inline-block">EST. 2012</span>
+                </div>
+            </div>
+
+            <!-- Hatalmas Címsor -->
+            <h1 class="font-hero font-black text-mobile-huge md:text-huge leading-[0.85] md:leading-[0.8] text-black tracking-tighter w-full text-left relative z-10 break-words"
+                data-aos="fade-up">
+                GYÖNGY HÁZ
+            </h1>
+        </div>
+    </header>
+
+    <!-- RÖVID BEMUTATKOZÁS -->
+    <section id="about" class="py-16 md:py-24 px-4 md:px-6 bg-transparent">
+        <div class="max-w-5xl mx-auto text-center bg-white/95 backdrop-blur-md p-8 md:p-12 border border-pastel-purple shadow-xl rounded-sm" data-aos="fade-up">
+            <h2 class="font-hero text-3xl md:text-6xl font-bold mb-6 md:mb-8 uppercase text-pastel-purple">Rólunk</h2>
+            <p class="text-base md:text-2xl font-light leading-relaxed max-w-3xl mx-auto text-gray-800">
+                Több mint 12 éve a szépség szolgálatában. Nem csak egy szalon vagyunk, hanem egy hely, ahol a szakértelem találkozik a stílussal. Letisztult környezet, professzionális szolgáltatások.
+            </p>
+        </div>
+    </section>
+
+    <!-- SZOLGÁLTATÁS VÁLASZTÓ -->
+    <section class="py-16 md:py-24 px-4 md:px-6 bg-transparent">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-end gap-4 mb-8 md:mb-12 bg-white/90 backdrop-blur-sm p-4 inline-block border border-pastel-purple">
+                <h2 class="font-hero text-3xl md:text-6xl font-bold uppercase leading-none text-black">Szolgáltatások</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <!-- Kártya 1 -->
+                <a href="#hair" class="box-card p-6 md:p-10 flex flex-col justify-between h-64 md:h-96 group relative block" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start">
+                        <span class="font-hero text-3xl md:text-4xl font-bold text-pastel-purple group-hover:text-white transition">01</span>
+                        <i class="fa-solid fa-scissors text-2xl md:text-3xl text-black group-hover:text-white transition transform group-hover:rotate-12"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-hero text-2xl md:text-4xl font-bold mb-2 uppercase text-black">Fodrászat</h3>
+                        <p class="text-sm font-medium text-gray-600 group-hover:text-white/80">Vágás, Festés, Styling</p>
+                    </div>
+                </a>
+
+                <!-- Kártya 2 -->
+                <a href="#nails" class="box-card p-6 md:p-10 flex flex-col justify-between h-64 md:h-96 group relative block" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start">
+                        <span class="font-hero text-3xl md:text-4xl font-bold text-pastel-purple group-hover:text-white transition">02</span>
+                        <i class="fa-solid fa-wand-magic-sparkles text-2xl md:text-3xl text-black group-hover:text-white transition transform group-hover:rotate-12"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-hero text-2xl md:text-4xl font-bold mb-2 uppercase text-black">Műköröm</h3>
+                        <p class="text-sm font-medium text-gray-600 group-hover:text-white/80">Géllakk, Építés, Design</p>
+                    </div>
+                </a>
+
+                <!-- Kártya 3 -->
+                <a href="#massage" class="box-card p-6 md:p-10 flex flex-col justify-between h-64 md:h-96 group relative block" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex justify-between items-start">
+                        <span class="font-hero text-3xl md:text-4xl font-bold text-pastel-purple group-hover:text-white transition">03</span>
+                        <i class="fa-solid fa-spa text-2xl md:text-3xl text-black group-hover:text-white transition transform group-hover:rotate-12"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-hero text-2xl md:text-4xl font-bold mb-2 uppercase text-black">Gyógymasszázs</h3>
+                        <p class="text-sm font-medium text-gray-600 group-hover:text-white/80">Regeneráció, Egészség</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. FODRÁSZAT SZEKCIÓ -->
+    <section id="hair" class="py-16 md:py-24 px-4 md:px-6 bg-transparent">
+        <div class="max-w-7xl mx-auto bg-white/95 backdrop-blur-sm p-6 md:p-12 border border-pastel-purple shadow-2xl">
+            <div class="flex flex-col md:flex-row gap-8 md:gap-16 mb-12 md:mb-16">
+                <!-- Szöveges rész -->
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <h2 class="font-hero text-4xl md:text-6xl font-black uppercase mb-6 md:mb-8 leading-none">
+                        Haj<br><span class="text-pastel-purple">Kezelések</span>
+                    </h2>
+                    <p class="text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-light text-black">
+                        A hajápolás nálunk művészet. Precíz vágások, modern festési technikák és prémium anyagok használata jellemzi munkánkat. Célunk, hogy frizurája ne csak szép, de egészséges is legyen.
+                    </p>
+                    <div class="grid grid-cols-1 gap-3 md:gap-4">
+                        <div class="border border-pastel-purple p-3 md:p-4 flex items-center bg-white hover:bg-purple-50 transition">
+                            <i class="fa-solid fa-check mr-4 text-pastel-purple"></i> Személyre szabott tanácsadás
+                        </div>
+                        <div class="border border-pastel-purple p-3 md:p-4 flex items-center bg-white hover:bg-purple-50 transition">
+                            <i class="fa-solid fa-check mr-4 text-pastel-purple"></i> Balayage specialista
+                        </div>
+                    </div>
+                </div>
+                <!-- Kép -->
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="img-hover-zoom h-[300px] md:h-[600px] w-full">
+                        <img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?q=80&w=800&auto=format&fit=crop" 
+                             alt="Fodrászat" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- LENYITHATÓ ÁRLISTA (FODRÁSZAT) -->
+            <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                <details class="styled-accordion group" open>
+                    <summary>
+                        <span>Fodrászati Árlista</span>
+                        <i class="fa-solid fa-plus group-open:hidden"></i>
+                        <i class="fa-solid fa-minus hidden group-open:block"></i>
+                    </summary>
+                    
+                    <div class="p-4 md:p-8 border-t border-pastel-purple table-container">
+                        <table class="service-table text-left border-collapse">
+                            <thead>
+                                <tr class="border-b-2 border-pastel-purple text-pastel-purple">
+                                    <th class="py-4 font-hero text-sm md:text-lg uppercase">Szolgáltatás</th>
+                                    <th class="py-4 font-hero text-sm md:text-lg uppercase">Rövid</th>
+                                    <th class="py-4 font-hero text-sm md:text-lg uppercase">Közép</th>
+                                    <th class="py-4 font-hero text-sm md:text-lg uppercase">Hosszú</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-black font-medium text-sm md:text-base">
+                                <tr><td>Hajszárítás</td><td>4 500 Ft</td><td>5 500 Ft</td><td>6 800 Ft</td></tr>
+                                <tr><td>Hajvágás + mosás + szárítás</td><td>6 000 Ft</td><td>9 500 Ft</td><td>12 500 Ft</td></tr>
+                                <tr><td>Hajfestés + vágás + szárítás</td><td>11 000 Ft</td><td>15-18 000 Ft</td><td>20-30 000 Ft</td></tr>
+                                
+                                <!-- Kiemelt sorok -->
+                                <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Melír</td>
+                                    <td>15 000 Ft-tól</td><td>–</td><td>–</td>
+                                </tr>
+                                <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Balayage + tőfestés</td>
+                                    <td>–</td><td>38 000 Ft-tól</td><td>–</td>
+                                </tr>
+                                <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Money piece</td>
+                                    <td>–</td><td>15 000 Ft-tól</td><td>–</td>
+                                </tr>
+                                <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Sötét haj világosítása</td>
+                                    <td>–</td><td>38 000 Ft-tól</td><td>–</td>
+                                </tr>
+                                <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Hajszerkezet megújító</td>
+                                    <td>–</td><td>13 000 Ft-tól</td><td>–</td>
+                                </tr>
+                                
+                                <tr><td>Dauer</td><td>12 000 Ft</td><td>16 000 Ft</td><td>20 000 Ft-tól</td></tr>
+                                <tr><td>Férfi hajvágás</td><td>4 500 Ft</td><td>–</td><td>–</td></tr>
+                                <tr><td>Gyerek hajvágás (10 évig)</td><td>4 000 Ft</td><td>–</td><td>–</td></tr>
+                                <tr><td>Raszta hajtincs felrakása</td><td>800 Ft / tincs</td><td>–</td><td>–</td></tr>
+                                
+                                <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Hajegyenesítés</td>
+                                    <td>–</td><td>30 000 Ft-tól</td><td>–</td>
+                                </tr>
+                                
+                                <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Alkalmi frizura</td>
+                                    <td colspan="3">8 500 Ft-tól</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. MŰKÖRÖM SZEKCIÓ -->
+    <section id="nails" class="py-16 md:py-24 px-4 md:px-6 bg-transparent">
+        <div class="max-w-7xl mx-auto bg-white/95 backdrop-blur-sm p-6 md:p-12 border border-pastel-purple shadow-2xl">
+            <div class="flex flex-col-reverse md:flex-row gap-8 md:gap-16 items-center mb-12 md:mb-16">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <div class="img-hover-zoom h-[300px] md:h-[600px] w-full">
+                        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=800&auto=format&fit=crop" 
+                             alt="Műköröm" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <h2 class="font-hero text-4xl md:text-6xl font-black uppercase mb-6 md:mb-8 leading-none">
+                        Kéz<br><span class="text-pastel-purple">Ápolás</span>
+                    </h2>
+                    <!-- IDÉZET BEILLESZTVE -->
+                    <p class="text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-light text-black italic">
+                        <span class="font-bold text-pastel-purple not-italic">Évi:</span> „10 éve dolgozom műkörmösként, számomra ez nem csak munka, hanem igazi alkotás. Kreatív vagyok, minden köröm egyedi figyelmet kap. A mintákat kézzel festem, nem használok matricákat – hiszem, hogy a részletek és az egyediség teszik igazán különlegessé a körmöket.”
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                        <div class="bg-white p-4 md:p-6 border border-pastel-purple hover:bg-pastel-purple hover:text-white transition cursor-default shadow-sm hover:shadow-lg">
+                            <h4 class="font-hero text-lg md:text-xl font-bold mb-2">Géllakk</h4>
+                            <p class="text-sm opacity-70">Tartós szín hetekig</p>
+                        </div>
+                        <div class="bg-white p-4 md:p-6 border border-pastel-purple hover:bg-pastel-purple hover:text-white transition cursor-default shadow-sm hover:shadow-lg">
+                            <h4 class="font-hero text-lg md:text-xl font-bold mb-2">Építés</h4>
+                            <p class="text-sm opacity-70">Zselés technika</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LENYITHATÓ ÁRLISTA (MŰKÖRÖM) -->
+            <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                <details class="styled-accordion group">
+                    <summary>
+                        <span>Műköröm Árlista</span>
+                        <i class="fa-solid fa-plus group-open:hidden"></i>
+                        <i class="fa-solid fa-minus hidden group-open:block"></i>
+                    </summary>
+                    
+                    <div class="p-4 md:p-8 border-t border-pastel-purple table-container">
+                        <table class="service-table text-left border-collapse">
+                            <thead>
+                                <tr class="border-b-2 border-pastel-purple text-pastel-purple">
+                                    <th class="py-4 font-hero text-sm md:text-lg uppercase">Szolgáltatás</th>
+                                    <th class="py-4 font-hero text-sm md:text-lg uppercase text-right">Ár</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-black font-medium text-sm md:text-base">
+                                <!-- Zselés -->
+                                <tr class="bg-purple-50"><td colspan="2" class="py-2 pl-2 font-bold text-pastel-purple text-sm uppercase tracking-wider">Zselés Köröm</td></tr>
+                                <tr><td class="py-3">Zselés töltés</td><td class="text-right">8 500 Ft</td></tr>
+                                <tr><td class="py-3">Zselés új szett</td><td class="text-right">9 600 Ft</td></tr>
+                                
+                                <!-- Méretek -->
+                                <tr class="bg-purple-50"><td colspan="2" class="py-2 pl-2 font-bold text-pastel-purple text-sm uppercase tracking-wider">Méretek (M / L)</td></tr>
+                                <tr><td class="py-3">M töltés</td><td class="text-right">9 600 Ft</td></tr>
+                                <tr><td class="py-3">M új szett</td><td class="text-right">10 600 Ft</td></tr>
+                                <tr><td class="py-3">L töltés</td><td class="text-right">10 800 Ft</td></tr>
+                                <tr><td class="py-3">L új szett</td><td class="text-right">11 800 Ft</td></tr>
+
+                                <!-- Egyéb -->
+                                <tr class="bg-purple-50"><td colspan="2" class="py-2 pl-2 font-bold text-pastel-purple text-sm uppercase tracking-wider">Egyéb Szolgáltatások</td></tr>
+                                <tr><td class="py-3">Erősített gél lakk</td><td class="text-right">6 600 Ft</td></tr>
+                                <tr><td class="py-3">Pedikűr</td><td class="text-right">5 500 Ft</td></tr>
+                                <tr><td class="py-3">Láb gél lakk</td><td class="text-right">5 500 Ft</td></tr>
+                                <tr><td class="py-3">Japán manikűr</td><td class="text-right">3 000 Ft</td></tr>
+                                <tr><td class="py-3">Spa Manikűr</td><td class="text-right">2 500 Ft</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. GYÓGYMASSZÁZS SZEKCIÓ -->
+    <section id="massage" class="py-16 md:py-24 px-4 md:px-6 bg-transparent">
+        <div class="max-w-7xl mx-auto bg-white/95 backdrop-blur-sm p-6 md:p-12 border border-pastel-purple shadow-2xl">
+            <div class="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <h2 class="font-hero text-4xl md:text-6xl font-black uppercase mb-6 md:mb-8 leading-none">
+                        Gyógy<br><span class="text-pastel-purple">Masszázs</span>
+                    </h2>
+                    <p class="text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-light text-black">
+                        Kizárólag professzionális gyógymasszázst végzünk. Célunk a fájdalomcsillapítás, a mozgásszervi panaszok enyhítése és a teljes testi-lelki feltöltődés.
+                    </p>
+                    <a href="#contact" class="btn-primary inline-block">
+                        Időpontot kérek
+                    </a>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="img-hover-zoom h-[300px] md:h-[600px] w-full">
+                        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=800&auto=format&fit=crop" 
+                             alt="Gyógymasszázs" class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALÉRIA -->
+    <section class="py-16 md:py-24 px-4 md:px-6 bg-transparent">
+        <div class="max-w-7xl mx-auto bg-white/80 backdrop-blur-sm p-6 md:p-8 border border-pastel-purple">
+            <h2 class="font-hero text-3xl md:text-4xl font-bold uppercase mb-8 md:mb-12 text-center text-pastel-purple">Galéria</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
+                <div class="row-span-2 col-span-1 sm:col-span-2 border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
+                </div>
+                <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
+                </div>
+                <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
+                </div>
+                <div class="col-span-1 sm:col-span-2 border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KAPCSOLAT -->
+    <section id="contact" class="py-16 md:py-24 px-4 md:px-6 bg-transparent">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row border border-pastel-purple bg-white shadow-2xl">
+            <div class="md:w-1/2 p-6 md:p-12 flex flex-col justify-center">
+                <h2 class="font-hero text-3xl md:text-4xl font-bold uppercase mb-6 md:mb-8 text-black">Kapcsolat</h2>
+                
+                <div class="space-y-6 md:space-y-8">
+                    <div>
+                        <h4 class="font-hero text-lg md:text-xl font-bold mb-2 text-pastel-purple">Címünk</h4>
+                        <p class="text-base md:text-lg text-black">Lakatos út 24., Budapest, Hungary</p>
+                    </div>
+                    
+                    <div class="border-t border-pastel-purple pt-6 md:pt-8">
+                        <h4 class="font-hero text-lg md:text-xl font-bold mb-4 md:mb-6 text-pastel-purple">Elérhetőségek</h4>
+                        
+                        <div class="grid grid-cols-1 gap-4 md:gap-6">
+                            <!-- Fodrászat -->
+                            <div class="flex flex-col border-b border-gray-200 pb-4 hover:pl-2 transition-all">
+                                <span class="font-bold uppercase text-sm text-gray-500 mb-1">Fodrászat</span>
+                                <span class="font-hero text-base md:text-lg font-bold text-black">Seres Gyöngyi</span>
+                                <a href="tel:+36703607627" class="font-bold text-pastel-purple hover:underline mt-1 text-lg">+36 70 360 7627</a>
+                            </div>
+
+                            <!-- Műköröm -->
+                            <div class="flex flex-col border-b border-gray-200 pb-4 hover:pl-2 transition-all">
+                                <span class="font-bold uppercase text-sm text-gray-500 mb-1">Műköröm</span>
+                                <span class="font-hero text-base md:text-lg font-bold text-black">Kiss Éva Brigitta</span>
+                                <a href="tel:+36702911201" class="font-bold text-pastel-purple hover:underline mt-1 text-lg">+36 70 291 1201</a>
+                            </div>
+
+                            <!-- Masszázs -->
+                            <div class="flex flex-col border-b border-gray-200 pb-4 opacity-50">
+                                <span class="font-bold uppercase text-sm text-gray-500 mb-1">Masszázs</span>
+                                <span class="text-sm italic text-black">Feltöltés alatt...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 h-64 md:h-auto border-t md:border-t-0 md:border-l border-pastel-purple">
+                <!-- Google Maps Embed -->
+                 <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2698.567890123456!2d19.167098!3d47.436789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741c3a1b2c3d4e5%3A0x1a2b3c4d5e6f7g8h!2sBudapest%2C%20Lakatos%20%C3%BAt%2024%2C%201184!5e0!3m2!1shu!2shu!4v1620000000000!5m2!1shu!2shu" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; filter: grayscale(100%) contrast(1.2);" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark-bg text-white py-12 md:py-16 border-t border-pastel-purple/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end text-center md:text-left">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="font-hero text-3xl md:text-4xl font-bold uppercase mb-4 text-pastel-purple">Gyöngy Ház</h3>
+                    <p class="text-gray-400 text-sm max-w-xs mx-auto md:mx-0">Minőség és szakértelem több mint 12 éve. A szépségápolás modern megközelítése.</p>
+                </div>
+
+                <div class="flex gap-6">
+                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-8 md:mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 uppercase tracking-wider gap-2">
+                <p>&copy; 2026 Gyöngy Ház Szépségszalon.</p>
+                <p>Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // Mobil menü logika
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // Menü nyitás/zárás
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Menü bezárása kattintáskor
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- MOUSE GLOW CANVAS ANIMÁCIÓ ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        
+        let mouse = { x: -1000, y: -1000 };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        
+        // Touch támogatás mobilra
+        window.addEventListener('touchmove', (e) => {
+            mouse.x = e.touches[0].clientX;
+            mouse.y = e.touches[0].clientY;
+        });
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+
+        function draw() {
+            // Törlés helyett sötét háttér újrarajzolása
+            ctx.fillStyle = '#0f0f0f'; // Sötét háttér
+            ctx.fillRect(0, 0, width, height);
+
+            // Glow effekt az egér körül
+            if (mouse.x > -100) {
+                // Radiális gradiens létrehozása
+                // x, y, belső sugár, x, y, külső sugár
+                const gradient = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 600);
+                
+                // Színek: Pasztell lila középen, átlátszó a szélen
+                gradient.addColorStop(0, 'rgba(196, 167, 231, 0.15)'); // #C4A7E7 alacsony opacitással
+                gradient.addColorStop(0.5, 'rgba(196, 167, 231, 0.05)');
+                gradient.addColorStop(1, 'rgba(15, 15, 15, 0)'); // Átmenet a háttérszínbe
+
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, width, height);
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        draw();
+
+    </script>
+</body>
+</html>
