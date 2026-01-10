@@ -448,11 +448,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- Kép -->
+                <!-- Kép (FODRÁSZAT CLOSE UP) -->
                 <div class="md:w-1/2" data-aos="fade-left">
                     <div class="img-hover-zoom h-[300px] md:h-[600px] w-full">
-                        <img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?q=80&w=800&auto=format&fit=crop" 
-                             alt="Fodrászat" class="w-full h-full object-cover" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=800&auto=format&fit=crop" 
+                             alt="Fodrászat Close-up" class="w-full h-full object-cover" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -584,12 +584,24 @@
                             </tbody>
                         </table>
                         
-                        <!-- IDŐPONT GOMB (ÚJ) -->
+                        <!-- IDŐPONT GOMB -->
                         <div class="mt-6 text-center">
                             <a href="#contact" class="btn-primary inline-block w-full md:w-auto">
                                 Időpontot szeretnék!
                             </a>
                         </div>
+                    </div>
+                </details>
+
+                <!-- KUPONOK (ÜRES) -->
+                <details class="styled-accordion group mt-4">
+                    <summary>
+                        <span>Kuponok</span>
+                        <i class="fa-solid fa-plus group-open:hidden"></i>
+                        <i class="fa-solid fa-minus hidden group-open:block"></i>
+                    </summary>
+                    <div class="p-4 border-t border-pastel-purple text-gray-500 italic text-center">
+                        Jelenleg nincs elérhető kupon.
                     </div>
                 </details>
             </div>
@@ -602,8 +614,9 @@
             <div class="flex flex-col-reverse md:flex-row gap-8 md:gap-16 items-center mb-12 md:mb-16">
                 <div class="md:w-1/2" data-aos="fade-right">
                     <div class="img-hover-zoom h-[300px] md:h-[600px] w-full">
-                        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=800&auto=format&fit=crop" 
-                             alt="Műköröm" class="w-full h-full object-cover" loading="lazy">
+                        <!-- Kép (MŰKÖRÖM CLOSE UP - FESTÉS - JAVÍTVA) -->
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop" 
+                             alt="Műköröm Festés Close-up" class="w-full h-full object-cover" loading="lazy">
                     </div>
                 </div>
                 <div class="md:w-1/2" data-aos="fade-left">
@@ -733,11 +746,36 @@
                             </tbody>
                         </table>
 
-                        <!-- IDŐPONT GOMB (ÚJ) -->
+                        <!-- IDŐPONT GOMB -->
                         <div class="mt-6 text-center">
                             <a href="#contact" class="btn-primary inline-block w-full md:w-auto">
                                 Időpontot szeretnék!
                             </a>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- KUPONOK (AKTÍV) -->
+                <details class="styled-accordion group mt-4">
+                    <summary>
+                        <span>Kuponok</span>
+                        <i class="fa-solid fa-plus group-open:hidden"></i>
+                        <i class="fa-solid fa-minus hidden group-open:block"></i>
+                    </summary>
+                    <div class="p-4 border-t border-pastel-purple">
+                        <!-- KUPON GRID -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                             <!-- KUPON KÁRTYA 1 -->
+                             <div onclick="openCouponModal('coupon1')" class="cursor-pointer bg-white border border-pastel-purple p-6 hover:shadow-xl transition-all duration-300 group h-full flex flex-col justify-between relative overflow-hidden">
+                                <div>
+                                    <h4 class="font-hero font-bold uppercase text-lg mb-2 text-black">5 Alkalmas Bérlet</h4>
+                                    <p class="text-xs text-gray-500 mb-4 uppercase tracking-wide">Műköröm töltés / építés</p>
+                                </div>
+                                <div class="flex justify-between items-end mt-4">
+                                     <span class="font-bold text-pastel-purple text-xl">35 990 Ft</span>
+                                     <i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-pastel-purple transition text-xl"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </details>
@@ -763,15 +801,16 @@
                 </div>
                 <div class="md:w-1/2" data-aos="fade-left">
                     <div class="img-hover-zoom h-[300px] md:h-[600px] w-full">
-                        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=800&auto=format&fit=crop" 
-                             alt="Gyógymasszázs" class="w-full h-full object-cover" loading="lazy">
+                        <!-- Kép (MASSZÁZS CLOSE UP) -->
+                        <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=800&auto=format&fit=crop" 
+                             alt="Gyógymasszázs Close-up" class="w-full h-full object-cover" loading="lazy">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- GALÉRIA -->
+    <!-- GALÉRIA (EREDETI KÉPEK) -->
     <section class="py-16 md:py-24 px-4 md:px-6 bg-transparent">
         <div class="max-w-7xl mx-auto bg-white/80 backdrop-blur-sm p-6 md:p-8 border border-pastel-purple">
             <h2 class="font-hero text-3xl md:text-4xl font-bold uppercase mb-8 md:mb-12 text-center text-pastel-purple">Galéria</h2>
@@ -837,12 +876,12 @@
                 </div>
             </div>
             <div class="md:w-1/2 h-64 md:h-auto border-t md:border-t-0 md:border-l border-pastel-purple">
-                <!-- Google Maps Embed - Gyöngyi Szépségstúdió -->
+                <!-- Google Maps Embed - Gyöngyi Szépségstúdió (SZÍNES) -->
                  <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10793.567890123456!2d19.171343!3d47.4494838!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741c336ec8972db%3A0xb8679f6a37894af9!2sGy%C3%B6ngyi%20Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3!5e0!3m2!1shu!2shu" 
                     width="100%" 
                     height="100%" 
-                    style="border:0; filter: grayscale(100%) contrast(1.2);" 
+                    style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy">
                 </iframe>
@@ -864,7 +903,7 @@
             <div class="flex justify-center items-center flex-row-reverse gap-2 md:gap-4">
                 
                 <!-- 5. Csillag -->
-                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                    target="_blank" 
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
                    title="5 csillag">
@@ -872,7 +911,7 @@
                 </a>
 
                 <!-- 4. Csillag -->
-                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                    target="_blank" 
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
                    title="4 csillag">
@@ -880,7 +919,7 @@
                 </a>
 
                 <!-- 3. Csillag -->
-                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                    target="_blank" 
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
                    title="3 csillag">
@@ -888,7 +927,7 @@
                 </a>
 
                 <!-- 2. Csillag -->
-                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                    target="_blank" 
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
                    title="2 csillag">
@@ -896,7 +935,7 @@
                 </a>
 
                 <!-- 1. Csillag -->
-                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+                <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                    target="_blank" 
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
                    title="1 csillag">
@@ -961,15 +1000,15 @@
         
         <!-- Csillagok (Kicsiben) -->
         <div class="flex justify-center items-center flex-row-reverse gap-1">
-             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
-             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
-             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
-             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
-             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m16!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m5!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
+             <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
                target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
         </div>
     </div>
@@ -997,7 +1036,12 @@
 
             <!-- STEP 2: EMAIL INPUT -->
             <div id="newsletter-step-2" class="hidden">
-                <h2 class="font-hero text-2xl font-black uppercase mb-4 text-black">Szuper Döntés!</h2>
+                <!-- VISSZA GOMB -->
+                <button onclick="backToNewsletterStep1()" class="absolute top-4 left-4 text-gray-400 hover:text-pastel-purple transition text-sm font-bold uppercase flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-left"></i> Vissza
+                </button>
+
+                <h2 class="font-hero text-2xl font-black uppercase mb-4 text-black mt-4">Szuper Döntés!</h2>
                 <p class="text-gray-600 mb-6 text-sm">
                     Add meg az email címed, hogy elsőként értesülhess.
                 </p>
@@ -1018,6 +1062,54 @@
                 <p class="text-gray-600">Hamarosan jelentkezünk a legjobb ajánlatokkal.</p>
             </div>
 
+        </div>
+    </div>
+
+    <!-- KUPON MODAL (ÚJ) -->
+    <div id="coupon-modal-1" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
+            <!-- Bezárás gomb (NÉGYZET) -->
+            <button onclick="closeCouponModal('coupon1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
+                <i class="fa-solid fa-times text-sm"></i>
+            </button>
+            
+            <!-- Kép -->
+            <div class="h-48 w-full relative">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover" alt="Kupon">
+            </div>
+            
+            <!-- Tartalom -->
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start mb-2">
+                    <div class="flex text-pastel-purple text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                
+                <h3 class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Műköröm Bérlet</h3>
+                
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-2xl font-bold text-black">35 990 Ft</span>
+                    <span class="text-sm text-gray-500 line-through">42 500 Ft</span>
+                </div>
+                
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                    Szereted, ha a körmeid mindig tökéletesek? Miért fizetnél többet, ha a rendszerességet díjazzuk? Az 5 alkalmas bérlettel nemcsak pénzt spórolsz (gyakorlatilag egy alkalom ajándék!), de elkötelezed magad a folyamatos ragyogás mellett.
+                </p>
+                
+                <div class="mb-6">
+                    <h4 class="font-bold uppercase text-xs mb-2 text-gray-400 tracking-wider">Mit tartalmaz:</h4>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex items-start"><span class="mr-2 text-black">■</span> 5 alkalom tetszőleges felhasználással</li>
+                        <li class="flex items-start"><span class="mr-2 text-black">■</span> Közel 7 000 Ft megtakarítás</li>
+                        <li class="flex items-start"><span class="mr-2 text-black">■</span> 6 hónapig érvényes</li>
+                    </ul>
+                </div>
+                
+                <a href="#contact" onclick="closeCouponModal('coupon1')" class="block w-full bg-black text-white text-center py-4 font-bold uppercase tracking-wider hover:bg-gray-800 transition">
+                    Megrendelem
+                </a>
+            </div>
         </div>
     </div>
 
@@ -1052,7 +1144,7 @@
         function closePopup() {
             const popup = document.getElementById('review-popup');
             popup.classList.add('translate-y-[200%]'); // Elrejtés lefelé
-            localStorage.setItem('reviewPopupClosed', 'true'); // Megjegyzés, hogy bezárták
+            // localStorage.setItem('reviewPopupClosed', 'true'); // KIKAPCSOLVA: MINDIG MEGJELENIK
         }
 
         // --- NEWSLETTER MODAL LOGIKA ---
@@ -1060,16 +1152,13 @@
         const newsletterContent = document.getElementById('newsletter-content');
 
         function openNewsletterModal() {
-            // Csak akkor nyitjuk meg, ha még nem látta/zárta be (opcionális: localStorage ellenőrzés)
-            if (!localStorage.getItem('newsletterClosed')) {
-                newsletterModal.classList.remove('hidden');
-                // Kis késleltetés az animációhoz
-                setTimeout(() => {
-                    newsletterModal.classList.remove('opacity-0');
-                    newsletterContent.classList.remove('scale-95');
-                    newsletterContent.classList.add('scale-100');
-                }, 100);
-            }
+            // localStorage ellenőrzés KIKAPCSOLVA: MINDIG MEGJELENIK
+            newsletterModal.classList.remove('hidden');
+            setTimeout(() => {
+                newsletterModal.classList.remove('opacity-0');
+                newsletterContent.classList.remove('scale-95');
+                newsletterContent.classList.add('scale-100');
+            }, 100);
         }
 
         function closeNewsletterModal() {
@@ -1079,12 +1168,17 @@
             setTimeout(() => {
                 newsletterModal.classList.add('hidden');
             }, 500);
-            localStorage.setItem('newsletterClosed', 'true'); // Eltároljuk, hogy látta
+            // localStorage.setItem('newsletterClosed', 'true'); // KIKAPCSOLVA
         }
 
         function showNewsletterInput() {
             document.getElementById('newsletter-step-1').classList.add('hidden');
             document.getElementById('newsletter-step-2').classList.remove('hidden');
+        }
+
+        function backToNewsletterStep1() {
+            document.getElementById('newsletter-step-2').classList.add('hidden');
+            document.getElementById('newsletter-step-1').classList.remove('hidden');
         }
 
         function submitNewsletter() {
@@ -1098,21 +1192,30 @@
             }, 2500);
         }
 
+        // --- KUPON MODAL LOGIKA ---
+        function openCouponModal(id) {
+            const modal = document.getElementById('coupon-modal-1'); // Most csak 1 van, de bővíthető
+            modal.classList.remove('hidden');
+        }
+
+        function closeCouponModal(id) {
+            const modal = document.getElementById('coupon-modal-1');
+            modal.classList.add('hidden');
+        }
+
         // Oldal betöltésekor ellenőrzés és indítás
         window.addEventListener('load', () => {
             
-            // 1. Hírlevél Popup (Azonnal vagy nagyon gyorsan)
+            // 1. Hírlevél Popup (Azonnal vagy nagyon gyorsan) - MINDIG
             setTimeout(() => {
                 openNewsletterModal();
             }, 1000); 
 
-            // 2. Review Popup (Késleltetve, hogy ne üssék egymást)
-            if (!localStorage.getItem('reviewPopupClosed')) {
-                setTimeout(() => {
-                    const popup = document.getElementById('review-popup');
-                    popup.classList.remove('translate-y-[200%]'); 
-                }, 5000); // 5 másodperc késleltetés, hogy a hírlevél után jöjjön
-            }
+            // 2. Review Popup (Késleltetve) - MINDIG
+            setTimeout(() => {
+                const popup = document.getElementById('review-popup');
+                popup.classList.remove('translate-y-[200%]'); 
+            }, 5000); // 5 másodperc késleltetés
         });
 
         // --- MOUSE GLOW CANVAS ANIMÁCIÓ ---
