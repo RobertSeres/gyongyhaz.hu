@@ -64,7 +64,7 @@
             background: #0f0f0f;
         }
 
-        /* Háttér Szöveg (GYÖNGY HÁZ) */
+        /* Háttér Szöveg */
         .background-text-container {
             position: fixed;
             top: 60%; 
@@ -186,7 +186,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Táblázat stílus */
+        /* Táblázat stílus & Hover Description */
         .table-container {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
@@ -199,14 +199,41 @@
 
         .service-table tr {
             border-bottom: 1px solid #e5e5e5;
+            transition: background-color 0.2s;
         }
+        
+        .service-table tr:hover {
+            background-color: rgba(196, 167, 231, 0.05);
+        }
+
         .service-table td {
             padding: 1rem 0.5rem;
             white-space: nowrap;
+            vertical-align: top;
         }
+        
         .service-table td:first-child {
             white-space: normal;
-            min-width: 150px;
+            min-width: 180px;
+        }
+
+        /* Lehajtható leírás stílusa */
+        .service-desc {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 0;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0;
+            font-style: italic;
+        }
+
+        /* Hoverre lenyílik */
+        tr:hover .service-desc {
+            max-height: 100px; /* Elegendő magasság a szövegnek */
+            opacity: 1;
+            margin-top: 0.5rem;
         }
 
         /* Gomb stílus */
@@ -274,7 +301,7 @@
     </div>
 
     <!-- NAVIGÁCIÓ -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-pastel-purple transition-all duration-300" id="navbar">
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-pastel-purple transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex justify-between items-center h-16 md:h-20">
                 <!-- Logo -->
@@ -315,28 +342,27 @@
         <!-- Háttérkép -->
         <div class="absolute inset-0 z-0">
              <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=1920&auto=format&fit=crop" 
-                  class="w-full h-full object-cover object-[25%] md:object-center"
-                  alt="Gyöngy Ház Hero"
-                  loading="eager">
+                  class="w-full h-full object-cover object-left md:object-center"
+                  alt="Gyöngy Ház Hero">
         </div>
 
         <!-- Tartalom -->
         <div class="relative z-10 w-full px-4 md:px-12 pb-24 md:pb-12">
             <!-- Felső kis szöveg -->
-            <div class="mb-10 md:mb-20 pl-1 md:pl-2 relative z-20" data-aos="fade-right">
-                <p class="text-pastel-purple text-lg md:text-2xl font-bold tracking-wide font-hero drop-shadow-sm">
+            <div class="mb-20 pl-2 relative z-20" data-aos="fade-right">
+                <p class="text-pastel-purple text-xl md:text-2xl font-bold tracking-wide font-hero drop-shadow-sm">
                     A ragyogás itt kezdődik.
                 </p>
-                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2">
+                <div class="flex items-center gap-4 mt-4">
                     <a href="#contact" class="text-black font-bold underline decoration-2 decoration-pastel-purple underline-offset-4 hover:text-pastel-purple transition uppercase text-sm tracking-widest w-fit">
                         Foglaljon időpontot
                     </a>
-                    <span class="text-black text-sm font-bold tracking-widest border-l-0 sm:border-l border-black pl-0 sm:pl-4 hidden sm:inline-block">EST. 2012</span>
+                    <span class="text-black text-sm font-bold tracking-widest border-l border-black pl-4">EST. 2012</span>
                 </div>
             </div>
 
             <!-- Hatalmas Címsor -->
-            <h1 class="font-hero font-black text-mobile-huge md:text-huge leading-[0.85] md:leading-[0.8] text-black tracking-tighter w-full text-left relative z-10 break-words"
+            <h1 class="font-hero font-black text-mobile-huge md:text-huge leading-[0.8] text-black tracking-tighter w-full text-left relative z-10 break-words"
                 data-aos="fade-up">
                 GYÖNGY HÁZ
             </h1>
@@ -362,7 +388,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Kártya 1 -->
-                <a href="#hair" class="box-card p-6 md:p-10 flex flex-col justify-between h-64 md:h-96 group relative block" data-aos="fade-up" data-aos-delay="100">
+                <a href="#hair" class="box-card p-6 md:p-10 flex flex-col justify-between h-64 md:h-96 group relative block" data-aos="fade-up" data-aos-delay="50">
                     <div class="flex justify-between items-start">
                         <span class="font-hero text-3xl md:text-4xl font-bold text-pastel-purple group-hover:text-white transition">01</span>
                         <i class="fa-solid fa-scissors text-2xl md:text-3xl text-black group-hover:text-white transition transform group-hover:rotate-12"></i>
@@ -374,7 +400,7 @@
                 </a>
 
                 <!-- Kártya 2 -->
-                <a href="#nails" class="box-card p-6 md:p-10 flex flex-col justify-between h-64 md:h-96 group relative block" data-aos="fade-up" data-aos-delay="200">
+                <a href="#nails" class="box-card p-6 md:p-10 flex flex-col justify-between h-64 md:h-96 group relative block" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex justify-between items-start">
                         <span class="font-hero text-3xl md:text-4xl font-bold text-pastel-purple group-hover:text-white transition">02</span>
                         <i class="fa-solid fa-wand-magic-sparkles text-2xl md:text-3xl text-black group-hover:text-white transition transform group-hover:rotate-12"></i>
@@ -386,7 +412,7 @@
                 </a>
 
                 <!-- Kártya 3 -->
-                <a href="#massage" class="box-card p-6 md:p-10 flex flex-col justify-between h-64 md:h-96 group relative block" data-aos="fade-up" data-aos-delay="300">
+                <a href="#massage" class="box-card p-6 md:p-10 flex flex-col justify-between h-64 md:h-96 group relative block" data-aos="fade-up" data-aos-delay="150">
                     <div class="flex justify-between items-start">
                         <span class="font-hero text-3xl md:text-4xl font-bold text-pastel-purple group-hover:text-white transition">03</span>
                         <i class="fa-solid fa-spa text-2xl md:text-3xl text-black group-hover:text-white transition transform group-hover:rotate-12"></i>
@@ -409,8 +435,9 @@
                     <h2 class="font-hero text-4xl md:text-6xl font-black uppercase mb-6 md:mb-8 leading-none">
                         Haj<br><span class="text-pastel-purple">Kezelések</span>
                     </h2>
-                    <p class="text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-light text-black">
-                        A hajápolás nálunk művészet. Precíz vágások, modern festési technikák és prémium anyagok használata jellemzi munkánkat. Célunk, hogy frizurája ne csak szép, de egészséges is legyen.
+                    <!-- GYÖNGYI IDÉZET -->
+                    <p class="text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-light text-black italic">
+                        <span class="font-bold text-pastel-purple not-italic">Gyöngyi:</span> „Több mint 20 éve vagyok fodrász, és a munkám a mai napig örömet és inspirációt jelent számomra. Hiszem, hogy minden vendég egyedi, ezért nagy figyelmet fordítok arra, hogy ne csak frizurát készítsek, hanem olyan megjelenést, amely valóban tükrözi a személyiséget. Számomra fontos a bizalom, a nyugodt légkör és a minőségi idő, amit a vendégeimmel töltök. Folyamatosan képzem magam, mert szeretem a szakmám, és hiszem, hogy a fejlődés kulcsa az igényességben és a szenvedélyben rejlik.”
                     </p>
                     <div class="grid grid-cols-1 gap-3 md:gap-4">
                         <div class="border border-pastel-purple p-3 md:p-4 flex items-center bg-white hover:bg-purple-50 transition">
@@ -430,9 +457,9 @@
                 </div>
             </div>
 
-            <!-- LENYITHATÓ ÁRLISTA (FODRÁSZAT) -->
+            <!-- LENYITHATÓ ÁRLISTA (FODRÁSZAT) - ZÁRVA INDUL -->
             <div class="max-w-4xl mx-auto" data-aos="fade-up">
-                <details class="styled-accordion group" open>
+                <details class="styled-accordion group">
                     <summary>
                         <span>Fodrászati Árlista</span>
                         <i class="fa-solid fa-plus group-open:hidden"></i>
@@ -450,44 +477,108 @@
                                 </tr>
                             </thead>
                             <tbody class="text-black font-medium text-sm md:text-base">
-                                <tr><td>Hajszárítás</td><td>4 500 Ft</td><td>5 500 Ft</td><td>6 800 Ft</td></tr>
-                                <tr><td>Hajvágás + mosás + szárítás</td><td>6 000 Ft</td><td>9 500 Ft</td><td>12 500 Ft</td></tr>
-                                <tr><td>Hajfestés + vágás + szárítás</td><td>11 000 Ft</td><td>15-18 000 Ft</td><td>20-30 000 Ft</td></tr>
+                                <!-- Sorok leírással -->
+                                <tr>
+                                    <td>
+                                        Hajszárítás <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Kíméletes szárítás és formázás a tartós eredményért.</div>
+                                    </td>
+                                    <td>4 500 Ft</td><td>5 500 Ft</td><td>6 800 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Hajvágás + mosás + szárítás <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Frissítő mosás, precíz vágás és stílusos szárítás.</div>
+                                    </td>
+                                    <td>6 000 Ft</td><td>9 500 Ft</td><td>12 500 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Hajfestés + vágás + szárítás <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Teljes körű színváltoztatás prémium anyagokkal és új forma.</div>
+                                    </td>
+                                    <td>11 000 Ft</td><td>15-18 000 Ft</td><td>20-30 000 Ft</td>
+                                </tr>
                                 
                                 <!-- Kiemelt sorok -->
                                 <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
-                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Melír</td>
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">
+                                        Melír <i class="fa-solid fa-info-circle text-xs ml-1 opacity-50"></i>
+                                        <div class="service-desc">Természetes hatású, napszítta tincsek fóliás technikával.</div>
+                                    </td>
                                     <td>15 000 Ft-tól</td><td>–</td><td>–</td>
                                 </tr>
                                 <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
-                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Balayage + tőfestés</td>
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">
+                                        Balayage + tőfestés <i class="fa-solid fa-info-circle text-xs ml-1 opacity-50"></i>
+                                        <div class="service-desc">Szabadkézi festés a lágy átmenetekért, tőfestéssel kiegészítve.</div>
+                                    </td>
                                     <td>–</td><td>38 000 Ft-tól</td><td>–</td>
                                 </tr>
                                 <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
-                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Money piece</td>
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">
+                                        Money piece <i class="fa-solid fa-info-circle text-xs ml-1 opacity-50"></i>
+                                        <div class="service-desc">Az arcot keretező tincsek világosítása a ragyogó tekintetért.</div>
+                                    </td>
                                     <td>–</td><td>15 000 Ft-tól</td><td>–</td>
                                 </tr>
                                 <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
-                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Sötét haj világosítása</td>
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">
+                                        Sötét haj világosítása <i class="fa-solid fa-info-circle text-xs ml-1 opacity-50"></i>
+                                        <div class="service-desc">Kíméletes szőkítés sötét alapból, hajszerkezet védelemmel.</div>
+                                    </td>
                                     <td>–</td><td>38 000 Ft-tól</td><td>–</td>
                                 </tr>
                                 <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
-                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Hajszerkezet megújító</td>
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">
+                                        Hajszerkezet megújító <i class="fa-solid fa-info-circle text-xs ml-1 opacity-50"></i>
+                                        <div class="service-desc">Mélytápláló kezelés a sérült, igénybevett haj regenerálására.</div>
+                                    </td>
                                     <td>–</td><td>13 000 Ft-tól</td><td>–</td>
                                 </tr>
                                 
-                                <tr><td>Dauer</td><td>12 000 Ft</td><td>16 000 Ft</td><td>20 000 Ft-tól</td></tr>
-                                <tr><td>Férfi hajvágás</td><td>4 500 Ft</td><td>–</td><td>–</td></tr>
-                                <tr><td>Gyerek hajvágás (10 évig)</td><td>4 000 Ft</td><td>–</td><td>–</td></tr>
-                                <tr><td>Raszta hajtincs felrakása</td><td>800 Ft / tincs</td><td>–</td><td>–</td></tr>
+                                <tr>
+                                    <td>
+                                        Dauer <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Tartós hullámok a dúsabb hatásért.</div>
+                                    </td>
+                                    <td>12 000 Ft</td><td>16 000 Ft</td><td>20 000 Ft-tól</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Férfi hajvágás <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Modern és klasszikus férfi frizurák géppel és ollóval.</div>
+                                    </td>
+                                    <td>4 500 Ft</td><td>–</td><td>–</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Gyerek hajvágás (10 évig) <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Türelmes hajvágás a legkisebbeknek.</div>
+                                    </td>
+                                    <td>4 000 Ft</td><td>–</td><td>–</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Raszta hajtincs felrakása <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Hozott hajból tincsek szakszerű rögzítése.</div>
+                                    </td>
+                                    <td>800 Ft / tincs</td><td>–</td><td>–</td>
+                                </tr>
                                 
                                 <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
-                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Hajegyenesítés</td>
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">
+                                        Hajegyenesítés <i class="fa-solid fa-info-circle text-xs ml-1 opacity-50"></i>
+                                        <div class="service-desc">Tartós egyenesítés a sima és fényes hajért.</div>
+                                    </td>
                                     <td>–</td><td>30 000 Ft-tól</td><td>–</td>
                                 </tr>
                                 
                                 <tr class="bg-purple-50 hover:bg-white transition-colors duration-300 group/row">
-                                    <td class="py-3 pl-2 font-bold text-pastel-purple">Alkalmi frizura</td>
+                                    <td class="py-3 pl-2 font-bold text-pastel-purple">
+                                        Alkalmi frizura <i class="fa-solid fa-info-circle text-xs ml-1 opacity-50"></i>
+                                        <div class="service-desc">Elegáns kontyok és feltűzések különleges alkalmakra.</div>
+                                    </td>
                                     <td colspan="3">8 500 Ft-tól</td>
                                 </tr>
                             </tbody>
@@ -512,7 +603,7 @@
                     <h2 class="font-hero text-4xl md:text-6xl font-black uppercase mb-6 md:mb-8 leading-none">
                         Kéz<br><span class="text-pastel-purple">Ápolás</span>
                     </h2>
-                    <!-- IDÉZET BEILLESZTVE -->
+                    <!-- ÉVI IDÉZET -->
                     <p class="text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-light text-black italic">
                         <span class="font-bold text-pastel-purple not-italic">Évi:</span> „10 éve dolgozom műkörmösként, számomra ez nem csak munka, hanem igazi alkotás. Kreatív vagyok, minden köröm egyedi figyelmet kap. A mintákat kézzel festem, nem használok matricákat – hiszem, hogy a részletek és az egyediség teszik igazán különlegessé a körmöket.”
                     </p>
@@ -529,7 +620,7 @@
                 </div>
             </div>
 
-            <!-- LENYITHATÓ ÁRLISTA (MŰKÖRÖM) -->
+            <!-- LENYITHATÓ ÁRLISTA (MŰKÖRÖM) - ZÁRVA INDUL -->
             <div class="max-w-4xl mx-auto" data-aos="fade-up">
                 <details class="styled-accordion group">
                     <summary>
@@ -549,23 +640,89 @@
                             <tbody class="text-black font-medium text-sm md:text-base">
                                 <!-- Zselés -->
                                 <tr class="bg-purple-50"><td colspan="2" class="py-2 pl-2 font-bold text-pastel-purple text-sm uppercase tracking-wider">Zselés Köröm</td></tr>
-                                <tr><td class="py-3">Zselés töltés</td><td class="text-right">8 500 Ft</td></tr>
-                                <tr><td class="py-3">Zselés új szett</td><td class="text-right">9 600 Ft</td></tr>
+                                <tr>
+                                    <td class="py-3">
+                                        Zselés töltés <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Lenőtt köröm szakszerű pótlása és formázása.</div>
+                                    </td>
+                                    <td class="text-right">8 500 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3">
+                                        Zselés új szett <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Teljes körömépítés sablonnal, tetszőleges formára.</div>
+                                    </td>
+                                    <td class="text-right">9 600 Ft</td>
+                                </tr>
                                 
                                 <!-- Méretek -->
                                 <tr class="bg-purple-50"><td colspan="2" class="py-2 pl-2 font-bold text-pastel-purple text-sm uppercase tracking-wider">Méretek (M / L)</td></tr>
-                                <tr><td class="py-3">M töltés</td><td class="text-right">9 600 Ft</td></tr>
-                                <tr><td class="py-3">M új szett</td><td class="text-right">10 600 Ft</td></tr>
-                                <tr><td class="py-3">L töltés</td><td class="text-right">10 800 Ft</td></tr>
-                                <tr><td class="py-3">L új szett</td><td class="text-right">11 800 Ft</td></tr>
+                                <tr>
+                                    <td class="py-3">
+                                        M töltés <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Közepes hosszúságú körmök töltése.</div>
+                                    </td>
+                                    <td class="text-right">9 600 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3">
+                                        M új szett <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Közepes hosszúságú új körmök építése.</div>
+                                    </td>
+                                    <td class="text-right">10 600 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3">
+                                        L töltés <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Hosszú körmök töltése extra anyaghasználattal.</div>
+                                    </td>
+                                    <td class="text-right">10 800 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3">
+                                        L új szett <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Hosszú körmök építése extra stabilitással.</div>
+                                    </td>
+                                    <td class="text-right">11 800 Ft</td>
+                                </tr>
 
                                 <!-- Egyéb -->
                                 <tr class="bg-purple-50"><td colspan="2" class="py-2 pl-2 font-bold text-pastel-purple text-sm uppercase tracking-wider">Egyéb Szolgáltatások</td></tr>
-                                <tr><td class="py-3">Erősített gél lakk</td><td class="text-right">6 600 Ft</td></tr>
-                                <tr><td class="py-3">Pedikűr</td><td class="text-right">5 500 Ft</td></tr>
-                                <tr><td class="py-3">Láb gél lakk</td><td class="text-right">5 500 Ft</td></tr>
-                                <tr><td class="py-3">Japán manikűr</td><td class="text-right">3 000 Ft</td></tr>
-                                <tr><td class="py-3">Spa Manikűr</td><td class="text-right">2 500 Ft</td></tr>
+                                <tr>
+                                    <td class="py-3">
+                                        Erősített gél lakk <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Tartósabb gél lakk alapozó zselével megerősítve.</div>
+                                    </td>
+                                    <td class="text-right">6 600 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3">
+                                        Pedikűr <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Esztétikai lábápolás és bőrkeményedés eltávolítás.</div>
+                                    </td>
+                                    <td class="text-right">5 500 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3">
+                                        Láb gél lakk <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Tartós lakkozás lábkörmökre.</div>
+                                    </td>
+                                    <td class="text-right">5 500 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3">
+                                        Japán manikűr <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Természetes körömápolás méhviasszal a fényes körmökért.</div>
+                                    </td>
+                                    <td class="text-right">3 000 Ft</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3">
+                                        Spa Manikűr <i class="fa-solid fa-info-circle text-xs text-pastel-purple ml-1 opacity-50"></i>
+                                        <div class="service-desc">Kényeztető kézápolás radírozással és masszázzsal.</div>
+                                    </td>
+                                    <td class="text-right">2 500 Ft</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -582,8 +739,9 @@
                     <h2 class="font-hero text-4xl md:text-6xl font-black uppercase mb-6 md:mb-8 leading-none">
                         Gyógy<br><span class="text-pastel-purple">Masszázs</span>
                     </h2>
-                    <p class="text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-light text-black">
-                        Kizárólag professzionális gyógymasszázst végzünk. Célunk a fájdalomcsillapítás, a mozgásszervi panaszok enyhítése és a teljes testi-lelki feltöltődés.
+                    <!-- ALEXANDRA IDÉZET -->
+                    <p class="text-base md:text-lg mb-6 md:mb-8 leading-relaxed font-light text-black italic">
+                        <span class="font-bold text-pastel-purple not-italic">Alexandra:</span> „Több mint 10 éve foglalkozom gyógymasszázzsal, ez idő alatt számos vendégemnek segítettem a fájdalom csökkentésében, a mozgás könnyedségének visszanyerésében és a testi-lelki egyensúly helyreállításában. Munkám során kiemelten fontos számomra az egyéni igények figyelembevétele, hiszen minden ember és minden probléma más megközelítést igényel. A kezelések során a szakmai tudást, a tapasztalatot és az odafigyelést ötvözöm, legyen szó izomfeszültségről, mozgásszervi panaszokról, stressz okozta tünetekről vagy regenerációról. Célom nem csupán a tünetek enyhítése, hanem a probléma okának feltárása és a tartós javulás elérése. Hiszem, hogy a masszázs nem luxus, hanem az egészség megőrzésének és helyreállításának egyik hatékony eszköze.”
                     </p>
                     <a href="#contact" class="btn-primary inline-block">
                         Időpontot kérek
@@ -608,15 +766,15 @@
                     <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
-                <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="100">
+                <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="50">
                     <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
-                <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="200">
+                <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="100">
                     <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
-                <div class="col-span-1 sm:col-span-2 border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="300">
+                <div class="col-span-1 sm:col-span-2 border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="150">
                     <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
@@ -655,9 +813,10 @@
                             </div>
 
                             <!-- Masszázs -->
-                            <div class="flex flex-col border-b border-gray-200 pb-4 opacity-50">
+                            <div class="flex flex-col border-b border-gray-200 pb-4 hover:pl-2 transition-all">
                                 <span class="font-bold uppercase text-sm text-gray-500 mb-1">Masszázs</span>
-                                <span class="text-sm italic text-black">Feltöltés alatt...</span>
+                                <span class="font-hero text-base md:text-lg font-bold text-black">Kalmár Alexandra</span>
+                                <a href="tel:+36309000438" class="font-bold text-pastel-purple hover:underline mt-1 text-lg">+36 30 900 0438</a>
                             </div>
                         </div>
                     </div>
@@ -705,7 +864,13 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, offset: 50, duration: 800 });
+        // AOS Inicializálás gyorsabb betöltéssel
+        AOS.init({ 
+            once: true, 
+            offset: 10, // Szinte azonnal induljon
+            duration: 600, // Gyorsabb animáció
+            easing: 'ease-out-cubic'
+        });
 
         // Mobil menü logika
         const menuBtn = document.getElementById('mobile-menu-btn');
