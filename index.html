@@ -321,7 +321,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus-visible:ring-2 focus-visible:ring-pastel-purple z-50" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -1321,13 +1321,24 @@
 
         // Menü nyitás/zárás
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            const isOpen = !isHidden;
+            menuBtn.setAttribute('aria-expanded', isOpen);
+            menuBtn.setAttribute('aria-label', isOpen ? 'Menü bezárása' : 'Menü megnyitása');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars', isHidden);
+            icon.classList.toggle('fa-xmark', isOpen);
         });
 
         // Menü bezárása kattintáskor
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Menü megnyitása');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-xmark');
             });
         });
 
