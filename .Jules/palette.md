@@ -1,0 +1,3 @@
+## 2025-05-14 - [Mobile Menu & Modal Accessibility]
+**Learning:** For single-page static sites, implementing a robust mobile menu involves more than just toggling visibility; dynamic `aria-expanded` and `aria-label` updates, combined with visual icon swaps, significantly improve the experience for both screen reader and sighted users. Similarly, identifying modal-like popups and adding `role="dialog"` and `aria-modal="true"` ensures they are perceived correctly as distinct interactive layers.
+**Action:** Always ensure interactive toggles have corresponding ARIA state updates and that icon-only buttons have descriptive `aria-label` attributes.
