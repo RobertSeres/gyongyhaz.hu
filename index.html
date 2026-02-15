@@ -321,7 +321,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus-visible:ring-2 focus-visible:ring-pastel-purple rounded-md z-50" aria-label="Menü megnyitása" aria-expanded="false">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -1317,18 +1317,30 @@
         // Mobil menü logika
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMenu(forceClose = false) {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            const shouldOpen = forceClose ? false : !isExpanded;
 
-        // Menü bezárása kattintáskor
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            if (shouldOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                menuBtn.setAttribute('aria-label', 'Menü bezárása');
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
                 mobileMenu.classList.add('hidden');
-            });
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Menü megnyitása');
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        }
+
+        menuBtn.addEventListener('click', () => toggleMenu());
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => toggleMenu(true));
         });
 
         // --- POPUP LOGIKA (REVIEW) ---
