@@ -321,7 +321,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus-visible:ring-2 focus-visible:ring-pastel-purple focus-visible:ring-offset-2 z-50" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -1316,18 +1316,31 @@
 
         // Mobil menü logika
         const menuBtn = document.getElementById('mobile-menu-btn');
+        const menuIcon = menuBtn.querySelector('i');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMenu() {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            const newState = !isExpanded;
+
+            menuBtn.setAttribute('aria-expanded', newState);
+            menuBtn.setAttribute('aria-label', newState ? 'Menü bezárása' : 'Menü megnyitása');
+            mobileMenu.classList.toggle('hidden', !newState);
+
+            // Ikon csere
+            menuIcon.classList.toggle('fa-bars', !newState);
+            menuIcon.classList.toggle('fa-xmark', newState);
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
 
         // Menü bezárása kattintáskor
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                if (menuBtn.getAttribute('aria-expanded') === 'true') {
+                    toggleMenu();
+                }
             });
         });
 
