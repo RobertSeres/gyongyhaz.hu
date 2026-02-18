@@ -321,7 +321,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50 focus-visible:ring-2 focus-visible:ring-pastel-purple" aria-label="Menü megnyitása" aria-expanded="false">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -1108,7 +1108,7 @@
                 <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
                     <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider">Értesülj a kedvezményekről</h4>
                     <div class="flex w-full max-w-sm">
-                        <input type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
+                        <input type="email" aria-label="Email címed a hírlevélhez" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
                         <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
                             Értesülök!
                         </button>
@@ -1134,11 +1134,11 @@
     </footer>
 
     <!-- STICKY POPUP (ÉRTÉKELÉS) -->
-    <div id="review-popup" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
+    <div id="review-popup" role="dialog" aria-hidden="true" aria-labelledby="review-popup-title" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
         <!-- Bezárás gomb -->
-        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none">&times;</button>
+        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none" aria-label="Bezárás">&times;</button>
         
-        <h4 class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
+        <h4 id="review-popup-title" class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
         <p class="font-hero font-bold uppercase text-center text-pastel-purple mb-4 text-lg">Értékelj minket!</p>
         
         <!-- Csillagok (Kicsiben) -->
@@ -1157,7 +1157,7 @@
     </div>
 
     <!-- ENTRY POPUP (MARKETING / HÍRLEVÉL) -->
-    <div id="newsletter-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-500">
+    <div id="newsletter-modal" role="dialog" aria-modal="true" aria-label="Hírlevél feliratkozás" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-500">
         <div class="bg-white p-8 md:p-10 max-w-md w-[90%] text-center border-2 border-pastel-purple shadow-2xl relative transform scale-95 transition-transform duration-300" id="newsletter-content">
             
             <!-- STEP 1: AJÁNLAT -->
@@ -1180,7 +1180,7 @@
             <!-- STEP 2: EMAIL INPUT -->
             <div id="newsletter-step-2" class="hidden">
                 <!-- VISSZA GOMB -->
-                <button onclick="backToNewsletterStep1()" class="absolute top-4 left-4 text-gray-400 hover:text-pastel-purple transition text-sm font-bold uppercase flex items-center gap-2">
+                <button onclick="backToNewsletterStep1()" class="absolute top-4 left-4 text-gray-400 hover:text-pastel-purple transition text-sm font-bold uppercase flex items-center gap-2" aria-label="Vissza">
                     <i class="fa-solid fa-arrow-left"></i> Vissza
                 </button>
 
@@ -1189,7 +1189,7 @@
                     Add meg az email címed, hogy elsőként értesülhess.
                 </p>
                 <form onsubmit="event.preventDefault(); submitNewsletter();" class="flex flex-col gap-4">
-                    <input type="email" required placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
+                    <input type="email" aria-label="Email címed" required placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
                     <button type="submit" class="w-full bg-pastel-purple text-white py-3 font-bold uppercase tracking-wider hover:bg-purple-400 transition shadow-lg mt-2">
                         Feliratkozom!
                     </button>
@@ -1209,10 +1209,10 @@
     </div>
 
     <!-- KUPON MODAL 1 (MŰKÖRÖM) -->
-    <div id="coupon-modal-1" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="coupon-modal-1" role="dialog" aria-modal="true" aria-labelledby="coupon-modal-1-title" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
+            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
                 <i class="fa-solid fa-times text-sm"></i>
             </button>
             
@@ -1229,7 +1229,7 @@
                     </div>
                 </div>
                 
-                <h3 class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Műköröm Bérlet</h3>
+                <h3 id="coupon-modal-1-title" class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Műköröm Bérlet</h3>
                 
                 <div class="flex items-center gap-4 mb-4">
                     <span class="text-2xl font-bold text-black">35 990 Ft</span>
@@ -1257,10 +1257,10 @@
     </div>
 
     <!-- KUPON MODAL 2 (GÉLLAKK) -->
-    <div id="coupon-modal-2" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="coupon-modal-2" role="dialog" aria-modal="true" aria-labelledby="coupon-modal-2-title" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
+            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
                 <i class="fa-solid fa-times text-sm"></i>
             </button>
             
@@ -1277,7 +1277,7 @@
                     </div>
                 </div>
                 
-                <h3 class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Géllakk Bérlet</h3>
+                <h3 id="coupon-modal-2-title" class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Géllakk Bérlet</h3>
                 
                 <div class="flex items-center gap-4 mb-4">
                     <span class="text-2xl font-bold text-black">29 000 Ft</span>
@@ -1319,22 +1319,33 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMobileMenu(forceClose = false) {
+            const isOpening = forceClose ? false : mobileMenu.classList.contains('hidden');
+            const icon = menuBtn.querySelector('i');
 
-        // Menü bezárása kattintáskor
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            if (isOpening) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                menuBtn.setAttribute('aria-label', 'Menü bezárása');
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
                 mobileMenu.classList.add('hidden');
-            });
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Menü megnyitása');
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        }
+
+        menuBtn.addEventListener('click', () => toggleMobileMenu());
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => toggleMobileMenu(true));
         });
 
         // --- POPUP LOGIKA (REVIEW) ---
         function closePopup() {
             const popup = document.getElementById('review-popup');
             popup.classList.add('translate-y-[200%]'); // Elrejtés lefelé
+            popup.setAttribute('aria-hidden', 'true');
             // localStorage.setItem('reviewPopupClosed', 'true'); // KIKAPCSOLVA: MINDIG MEGJELENIK
         }
 
@@ -1410,6 +1421,7 @@
             setTimeout(() => {
                 const popup = document.getElementById('review-popup');
                 popup.classList.remove('translate-y-[200%]'); 
+                popup.setAttribute('aria-hidden', 'false');
             }, 5000); // 5 másodperc késleltetés
         });
 
