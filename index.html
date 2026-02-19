@@ -321,14 +321,14 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-purple z-50" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white/98 border-b border-pastel-purple shadow-2xl flex flex-col items-center py-8 space-y-6 md:hidden z-40 h-screen sm:h-auto">
+        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white/98 border-b border-pastel-purple shadow-2xl flex flex-col items-center py-8 space-y-6 md:hidden z-40 h-screen sm:h-auto" aria-hidden="true">
             <a href="#about" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Rólunk</a>
             <a href="#hair" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Fodrászat</a>
             <a href="#nails" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Műköröm</a>
@@ -1117,10 +1117,10 @@
 
                 <!-- Social Media -->
                 <div class="w-full md:w-1/3 flex justify-center md:justify-end gap-6">
-                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300" aria-label="Facebook">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
-                    <a href="#" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                    <a href="#" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300" aria-label="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
@@ -1134,9 +1134,9 @@
     </footer>
 
     <!-- STICKY POPUP (ÉRTÉKELÉS) -->
-    <div id="review-popup" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
+    <div id="review-popup" role="dialog" aria-label="Értékelés" aria-hidden="true" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
         <!-- Bezárás gomb -->
-        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none">&times;</button>
+        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none" aria-label="Bezárás">&times;</button>
         
         <h4 class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
         <p class="font-hero font-bold uppercase text-center text-pastel-purple mb-4 text-lg">Értékelj minket!</p>
@@ -1157,12 +1157,12 @@
     </div>
 
     <!-- ENTRY POPUP (MARKETING / HÍRLEVÉL) -->
-    <div id="newsletter-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-500">
+    <div id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" aria-hidden="true" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-500">
         <div class="bg-white p-8 md:p-10 max-w-md w-[90%] text-center border-2 border-pastel-purple shadow-2xl relative transform scale-95 transition-transform duration-300" id="newsletter-content">
             
             <!-- STEP 1: AJÁNLAT -->
             <div id="newsletter-step-1">
-                <h2 class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 text-black">Ragyogj <span class="text-pastel-purple">Okosabban!</span></h2>
+                <h2 id="newsletter-title" class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 text-black">Ragyogj <span class="text-pastel-purple">Okosabban!</span></h2>
                 <p class="text-gray-600 mb-8 leading-relaxed text-sm md:text-base">
                     Ne hagyd, hogy a legjobb időpontok és a szezonális kedvezmények elillanjanak! Csatlakozz <strong>VIP listánkhoz</strong>, és mi azonnal szólunk, ha szabadul fel hely vagy akciót hirdetünk.
                 </p>
@@ -1171,7 +1171,7 @@
                     <button onclick="showNewsletterInput()" class="w-full bg-pastel-purple text-white py-3 font-bold uppercase tracking-wider hover:bg-purple-400 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                         Igen, kérem a VIP ajánlatokat!
                     </button>
-                    <button onclick="closeNewsletterModal()" class="w-full bg-gray-200 text-gray-500 py-3 font-medium text-xs uppercase tracking-wide hover:bg-gray-300 transition">
+                    <button onclick="closeNewsletterModal()" aria-label="Bezárás" class="w-full bg-gray-200 text-gray-500 py-3 font-medium text-xs uppercase tracking-wide hover:bg-gray-300 transition">
                         Nem, lemaradok a kedvezményekről
                     </button>
                 </div>
@@ -1189,7 +1189,7 @@
                     Add meg az email címed, hogy elsőként értesülhess.
                 </p>
                 <form onsubmit="event.preventDefault(); submitNewsletter();" class="flex flex-col gap-4">
-                    <input type="email" required placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
+                    <input type="email" required aria-label="Email címed" placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
                     <button type="submit" class="w-full bg-pastel-purple text-white py-3 font-bold uppercase tracking-wider hover:bg-purple-400 transition shadow-lg mt-2">
                         Feliratkozom!
                     </button>
@@ -1318,16 +1318,31 @@
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+        const menuIcon = menuBtn.querySelector('i');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
+        function toggleMenu() {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            const newState = !isExpanded;
+
             mobileMenu.classList.toggle('hidden');
-        });
+            menuBtn.setAttribute('aria-expanded', newState);
+            mobileMenu.setAttribute('aria-hidden', !newState);
+            menuBtn.setAttribute('aria-label', newState ? 'Menü bezárása' : 'Menü megnyitása');
 
-        // Menü bezárása kattintáskor
+            if (newState) {
+                menuIcon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menuIcon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
             });
         });
 
@@ -1335,6 +1350,7 @@
         function closePopup() {
             const popup = document.getElementById('review-popup');
             popup.classList.add('translate-y-[200%]'); // Elrejtés lefelé
+            popup.setAttribute('aria-hidden', 'true');
             // localStorage.setItem('reviewPopupClosed', 'true'); // KIKAPCSOLVA: MINDIG MEGJELENIK
         }
 
@@ -1345,6 +1361,7 @@
         function openNewsletterModal() {
             // localStorage ellenőrzés KIKAPCSOLVA: MINDIG MEGJELENIK
             newsletterModal.classList.remove('hidden');
+            newsletterModal.setAttribute('aria-hidden', 'false');
             setTimeout(() => {
                 newsletterModal.classList.remove('opacity-0');
                 newsletterContent.classList.remove('scale-95');
@@ -1356,6 +1373,7 @@
             newsletterModal.classList.add('opacity-0');
             newsletterContent.classList.remove('scale-100');
             newsletterContent.classList.add('scale-95');
+            newsletterModal.setAttribute('aria-hidden', 'true');
             setTimeout(() => {
                 newsletterModal.classList.add('hidden');
             }, 500);
@@ -1410,6 +1428,7 @@
             setTimeout(() => {
                 const popup = document.getElementById('review-popup');
                 popup.classList.remove('translate-y-[200%]'); 
+                popup.setAttribute('aria-hidden', 'false');
             }, 5000); // 5 másodperc késleltetés
         });
 
