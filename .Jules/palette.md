@@ -1,0 +1,3 @@
+## 2025-05-15 - [Mobile Menu and Modal Accessibility]
+**Learning:** For mobile menu implementations in this repository, follow the established pattern of toggling `aria-expanded`, updating `aria-label` (if applicable), and swapping Font Awesome icon classes (e.g., `fa-bars` to `fa-xmark`) via JavaScript. When a UI element is hidden/shown using CSS transforms or opacity instead of 'display: none', JavaScript must toggle the 'aria-hidden' attribute or ensure the accessibility tree remains accurate. Full-screen modals should use `role="dialog"` and `aria-modal="true"`.
+**Action:** Always check for `aria-expanded` on toggle buttons and `role="dialog"` on modals. Ensure icon-only buttons and inputs without visible labels have descriptive `aria-label` attributes.
