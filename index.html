@@ -321,7 +321,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -1134,9 +1134,9 @@
     </footer>
 
     <!-- STICKY POPUP (ÉRTÉKELÉS) -->
-    <div id="review-popup" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
+    <div id="review-popup" role="dialog" aria-hidden="true" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
         <!-- Bezárás gomb -->
-        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none">&times;</button>
+        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none" aria-label="Bezárás">&times;</button>
         
         <h4 class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
         <p class="font-hero font-bold uppercase text-center text-pastel-purple mb-4 text-lg">Értékelj minket!</p>
@@ -1157,7 +1157,7 @@
     </div>
 
     <!-- ENTRY POPUP (MARKETING / HÍRLEVÉL) -->
-    <div id="newsletter-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-500">
+    <div id="newsletter-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-500">
         <div class="bg-white p-8 md:p-10 max-w-md w-[90%] text-center border-2 border-pastel-purple shadow-2xl relative transform scale-95 transition-transform duration-300" id="newsletter-content">
             
             <!-- STEP 1: AJÁNLAT -->
@@ -1209,10 +1209,10 @@
     </div>
 
     <!-- KUPON MODAL 1 (MŰKÖRÖM) -->
-    <div id="coupon-modal-1" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="coupon-modal-1" role="dialog" aria-modal="true" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
+            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
                 <i class="fa-solid fa-times text-sm"></i>
             </button>
             
@@ -1257,10 +1257,10 @@
     </div>
 
     <!-- KUPON MODAL 2 (GÉLLAKK) -->
-    <div id="coupon-modal-2" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="coupon-modal-2" role="dialog" aria-modal="true" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
+            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
                 <i class="fa-solid fa-times text-sm"></i>
             </button>
             
@@ -1316,25 +1316,30 @@
 
         // Mobil menü logika
         const menuBtn = document.getElementById('mobile-menu-btn');
+        const menuIcon = menuBtn.querySelector('i');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMobileMenu(forceClose = false) {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            const shouldOpen = forceClose ? false : !isExpanded;
 
-        // Menü bezárása kattintáskor
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+            mobileMenu.classList.toggle('hidden', !shouldOpen);
+            menuBtn.setAttribute('aria-expanded', shouldOpen);
+            menuBtn.setAttribute('aria-label', shouldOpen ? 'Menü bezárása' : 'Menü megnyitása');
+
+            menuIcon.classList.toggle('fa-bars', !shouldOpen);
+            menuIcon.classList.toggle('fa-xmark', shouldOpen);
+        }
+
+        menuBtn.addEventListener('click', () => toggleMobileMenu());
+        mobileLinks.forEach(link => link.addEventListener('click', () => toggleMobileMenu(true)));
 
         // --- POPUP LOGIKA (REVIEW) ---
         function closePopup() {
             const popup = document.getElementById('review-popup');
             popup.classList.add('translate-y-[200%]'); // Elrejtés lefelé
+            popup.setAttribute('aria-hidden', 'true');
             // localStorage.setItem('reviewPopupClosed', 'true'); // KIKAPCSOLVA: MINDIG MEGJELENIK
         }
 
@@ -1410,6 +1415,7 @@
             setTimeout(() => {
                 const popup = document.getElementById('review-popup');
                 popup.classList.remove('translate-y-[200%]'); 
+                popup.setAttribute('aria-hidden', 'false');
             }, 5000); // 5 másodperc késleltetés
         });
 
