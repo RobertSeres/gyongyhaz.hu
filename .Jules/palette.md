@@ -1,0 +1,3 @@
+## 2025-05-14 - Accessible Mobile Menu Pattern
+**Learning:** For static sites using Tailwind and Font Awesome, a robust mobile menu requires synchronized state management. Missing ARIA attributes (aria-expanded, aria-hidden) and lack of visual focus indicators are common accessibility gaps. Swapping icons (bars to xmark) and updating aria-labels dynamically provides essential feedback for both visual and screen-reader users.
+**Action:** Use a unified `toggleMenu` JavaScript function to manage ARIA states, icon classes, and visibility. Ensure the menu closes automatically when a navigation link is clicked and provide a visible focus ring for keyboard navigation.
