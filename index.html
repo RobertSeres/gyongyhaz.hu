@@ -321,14 +321,14 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none focus:ring-2 focus:ring-pastel-purple rounded-sm z-50" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white/98 border-b border-pastel-purple shadow-2xl flex flex-col items-center py-8 space-y-6 md:hidden z-40 h-screen sm:h-auto">
+        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white/98 border-b border-pastel-purple shadow-2xl flex flex-col items-center py-8 space-y-6 md:hidden z-40 h-screen sm:h-auto" aria-hidden="true">
             <a href="#about" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Rólunk</a>
             <a href="#hair" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Fodrászat</a>
             <a href="#nails" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Műköröm</a>
@@ -1317,17 +1317,36 @@
         // Mobil menü logika
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = menuBtn.querySelector('i');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMenu() {
+            const isClosing = !mobileMenu.classList.contains('hidden');
+            const newState = !isClosing; // true if opening
 
-        // Menü bezárása kattintáskor
+            mobileMenu.classList.toggle('hidden', isClosing);
+            menuBtn.setAttribute('aria-expanded', newState);
+            mobileMenu.setAttribute('aria-hidden', !newState);
+
+            if (newState) {
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-xmark');
+                menuBtn.setAttribute('aria-label', 'Menü bezárása');
+            } else {
+                mobileMenuIcon.classList.remove('fa-xmark');
+                mobileMenuIcon.classList.add('fa-bars');
+                menuBtn.setAttribute('aria-label', 'Menü megnyitása');
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Menü bezárása kattintáskor (pl. horgonyugrás után)
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
             });
         });
 
