@@ -1,0 +1,5 @@
+## 2025-05-14 - Mobile Menu State and Modal Accessibility
+
+**Learning:** When using a single-page architecture with Tailwind CSS, interactive elements like mobile menus often rely on simple class toggling. Without explicit ARIA management (`aria-expanded`, `aria-controls`) and visual state changes (swapping icons from `fa-bars` to `fa-xmark`), the interface remains ambiguous for both screen reader users and sighted users who expect clear feedback. Additionally, timed popups (newsletter, reviews) must use `role="dialog"` and appropriate `aria-modal` or `aria-hidden` attributes to manage the accessibility tree visibility correctly.
+
+**Action:** For mobile menu implementations, always use a unified toggle function that synchronizes ARIA attributes, Font Awesome icon classes, and visibility. For any overlay/modal, ensure it has a `role="dialog"`, a descriptive `aria-label` for close buttons, and `aria-hidden` management if the element is hidden via CSS transforms/opacity rather than `display: none`.
