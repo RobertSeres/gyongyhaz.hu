@@ -321,7 +321,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus-visible:ring-2 focus-visible:ring-pastel-purple outline-none z-50" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -1319,16 +1319,26 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMenu(forceState) {
+            const isClosing = forceState !== undefined ? !forceState : !mobileMenu.classList.contains('hidden');
 
-        // Menü bezárása kattintáskor
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            if (isClosing) {
                 mobileMenu.classList.add('hidden');
-            });
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Menü megnyitása');
+                menuBtn.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+            } else {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                menuBtn.setAttribute('aria-label', 'Menü bezárása');
+                menuBtn.querySelector('i').classList.replace('fa-bars', 'fa-xmark');
+            }
+        }
+
+        menuBtn.addEventListener('click', () => toggleMenu());
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => toggleMenu(false));
         });
 
         // --- POPUP LOGIKA (REVIEW) ---

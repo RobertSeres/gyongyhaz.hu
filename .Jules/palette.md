@@ -1,0 +1,3 @@
+## 2024-10-24 - Mobile Menu Accessibility & State Synchronization
+**Learning:** In static sites with manually toggled mobile menus, ARIA attributes (aria-expanded, aria-label) and visual icons often fall out of sync if managed via disparate event listeners. Using a unified state management function ensures the accessibility tree correctly reflects the visual state.
+**Action:** For mobile menu implementations in this repository, follow the established pattern of toggling `aria-expanded`, setting `aria-controls` to the menu container's ID, updating `aria-label`, and swapping Font Awesome icon classes (e.g., `fa-bars` to `fa-xmark`) via JavaScript.
