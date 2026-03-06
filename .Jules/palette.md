@@ -1,0 +1,3 @@
+## 2025-05-15 - [Accessible Mobile Navigation]
+**Learning:** Mobile menus often lack proper state indicators for screen readers and visual feedback for the current state. Combining ARIA attributes (`aria-expanded`, `aria-controls`) with visual icon changes (e.g., swapping `fa-bars` for `fa-xmark`) and updating the `aria-label` provides a much clearer user experience.
+**Action:** For mobile menu implementations in this repository, follow the established pattern of toggling `aria-expanded`, setting `aria-controls` to the menu container's ID, updating `aria-label`, and swapping Font Awesome icon classes via JavaScript using a unified state management function.
