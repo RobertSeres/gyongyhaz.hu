@@ -321,14 +321,20 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn"
+                        class="md:hidden text-2xl text-black p-2 z-50 focus-visible:ring-2 focus-visible:ring-pastel-purple rounded-sm"
+                        aria-label="Menü megnyitása"
+                        aria-expanded="false"
+                        aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-white/98 border-b border-pastel-purple shadow-2xl flex flex-col items-center py-8 space-y-6 md:hidden z-40 h-screen sm:h-auto">
+        <div id="mobile-menu"
+             aria-hidden="true"
+             class="hidden absolute top-16 left-0 w-full bg-white/98 border-b border-pastel-purple shadow-2xl flex flex-col items-center py-8 space-y-6 md:hidden z-40 h-screen sm:h-auto">
             <a href="#about" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Rólunk</a>
             <a href="#hair" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Fodrászat</a>
             <a href="#nails" class="mobile-link text-2xl font-hero uppercase font-bold text-black">Műköröm</a>
@@ -1319,16 +1325,29 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMenu(forceClose = false) {
+            const isOpening = forceClose ? false : mobileMenu.classList.contains('hidden');
+            const icon = menuBtn.querySelector('i');
 
-        // Menü bezárása kattintáskor
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            if (isOpening) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                menuBtn.setAttribute('aria-label', 'Menü bezárása');
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
                 mobileMenu.classList.add('hidden');
-            });
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Menü megnyitása');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        }
+
+        menuBtn.addEventListener('click', () => toggleMenu());
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => toggleMenu(true));
         });
 
         // --- POPUP LOGIKA (REVIEW) ---
