@@ -1,0 +1,3 @@
+## 2025-05-14 - Accessible Modals and Mobile Navigation
+**Learning:** Modals and popups require specific ARIA roles (dialog), modal states (aria-modal), and descriptive labels (aria-labelledby) to be truly accessible. Sticky non-modal popups should avoid aria-modal="true" to prevent focus trapping while still using role="dialog". Mobile menus need synchronized ARIA attributes (aria-expanded, aria-hidden) and visual feedback (swapping icons) managed by a unified state function.
+**Action:** Use role="dialog" and aria-labelledby for all interactive overlays. Ensure mobile navigation toggles both visual state and accessibility attributes (aria-expanded, aria-hidden, aria-label) consistently.
