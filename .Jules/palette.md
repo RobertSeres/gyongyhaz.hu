@@ -1,0 +1,3 @@
+## 2025-05-15 - [Form Accessibility and Modal UX]
+**Learning:** For a single-page static site with timed popups and modals, providing visible labels and explicit ARIA roles/attributes significantly improves the experience for both visual and screen-reader users. Replacing generic focus suppression (`focus:outline-none`) with a theme-consistent focus ring (`focus-visible:ring-2 focus-visible:ring-pastel-purple`) ensures keyboard navigation is intuitive and follows the project's visual language.
+**Action:** Always prefer visible <label> elements over placeholders. Use `role="dialog"`, `aria-modal`, and `aria-labelledby` for all custom modal implementations to ensure they are correctly announced by assistive technologies.
