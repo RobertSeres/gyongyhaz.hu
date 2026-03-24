@@ -1,0 +1,3 @@
+## 2025-05-14 - Accessible and Interactive Mobile Menu
+**Learning:** For mobile navigation implementations, it is crucial to synchronize visual states (icon swaps, visibility) with accessibility attributes (aria-expanded, aria-label). Using a unified state management function ensures consistency regardless of whether the menu is toggled by the main button or closed by a navigation link.
+**Action:** Always associate mobile menu toggle buttons with `aria-controls` and `aria-expanded`, and use JavaScript to dynamically update `aria-label` and Font Awesome icon classes (e.g., swapping `fa-bars` with `fa-times`) to provide clear feedback to all users.
