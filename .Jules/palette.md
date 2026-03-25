@@ -1,0 +1,3 @@
+## 2025-05-14 - Accessible Mobile Menu Pattern
+**Learning:** For single-page Tailwind sites, mobile navigation menus often lack ARIA synchronization between the toggle button and the link-driven closing action. A unified `toggleMenu(forceClose)` function ensures `aria-expanded`, `aria-label`, and icon classes (e.g., `fa-bars` to `fa-times`) remain consistent regardless of how the menu is closed.
+**Action:** Implement a state-aware `toggleMenu` function that manages both visibility and all related ARIA attributes/icons in one place, and trigger it from both the toggle button and individual navigation links.
