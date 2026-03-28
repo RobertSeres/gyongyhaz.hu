@@ -321,7 +321,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus-visible:ring-2 focus-visible:ring-pastel-purple rounded-sm z-50" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -958,19 +958,19 @@
             <h2 class="font-hero text-3xl md:text-4xl font-bold uppercase mb-8 md:mb-12 text-center text-pastel-purple">Galéria</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
                 <div class="row-span-2 col-span-1 sm:col-span-2 border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in">
-                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Fodrászati frizura közeli képe" loading="lazy">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
                 <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="50">
-                    <img src="https://images.unsplash.com/photo-1632345031635-7b80009a65b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1632345031635-7b80009a65b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Elegáns műköröm részletei" loading="lazy">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
                 <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Szépségápolási eszközök és környezet" loading="lazy">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
                 <div class="col-span-1 sm:col-span-2 border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="150">
-                    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Közeli kép egy masszázs kezelésről" loading="lazy">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
             </div>
@@ -1319,16 +1319,30 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
+        function toggleMenu(forceClose = false) {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            const shouldOpen = forceClose ? false : isHidden;
+
+            // Osztályok és ARIA állapotok kezelése
+            if (shouldOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                menuBtn.setAttribute('aria-label', 'Menü bezárása');
+                menuBtn.querySelector('i').classList.replace('fa-bars', 'fa-times');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Menü megnyitása');
+                menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            }
+        }
+
         // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        menuBtn.addEventListener('click', () => toggleMenu());
 
         // Menü bezárása kattintáskor
         mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+            link.addEventListener('click', () => toggleMenu(true));
         });
 
         // --- POPUP LOGIKA (REVIEW) ---
