@@ -1107,20 +1107,24 @@
                 <!-- Hírlevél Feliratkozás (ÚJ) -->
                 <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
                     <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider">Értesülj a kedvezményekről</h4>
-                    <div class="flex w-full max-w-sm">
-                        <input type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
-                        <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
-                            Értesülök!
-                        </button>
-                    </div>
+                    <form onsubmit="event.preventDefault(); submitFooterNewsletter();" class="flex flex-col w-full max-w-sm gap-2">
+                        <label for="footer-email" class="text-xs uppercase tracking-widest text-gray-400 font-bold">Email cím</label>
+                        <div class="flex w-full">
+                            <input id="footer-email" type="email" placeholder="Email címed..." required class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
+                            <button type="submit" id="footer-submit-btn" class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors whitespace-nowrap">
+                                Értesülök!
+                            </button>
+                        </div>
+                        <p id="footer-success-msg" class="text-xs text-pastel-purple font-bold hidden mt-1">Sikeres feliratkozás!</p>
+                    </form>
                 </div>
 
                 <!-- Social Media -->
                 <div class="w-full md:w-1/3 flex justify-center md:justify-end gap-6">
-                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300" aria-label="Facebook">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
-                    <a href="#" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                    <a href="#" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300" aria-label="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
@@ -1188,9 +1192,10 @@
                 <p class="text-gray-600 mb-6 text-sm">
                     Add meg az email címed, hogy elsőként értesülhess.
                 </p>
-                <form onsubmit="event.preventDefault(); submitNewsletter();" class="flex flex-col gap-4">
-                    <input type="email" required placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
-                    <button type="submit" class="w-full bg-pastel-purple text-white py-3 font-bold uppercase tracking-wider hover:bg-purple-400 transition shadow-lg mt-2">
+                <form onsubmit="event.preventDefault(); submitNewsletter();" class="flex flex-col gap-4 text-left">
+                    <label for="modal-email" class="text-xs uppercase tracking-widest text-gray-500 font-bold mb-[-12px]">Email cím</label>
+                    <input id="modal-email" type="email" required placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
+                    <button type="submit" id="modal-submit-btn" class="w-full bg-pastel-purple text-white py-3 font-bold uppercase tracking-wider hover:bg-purple-400 transition shadow-lg mt-2">
                         Feliratkozom!
                     </button>
                 </form>
@@ -1373,14 +1378,49 @@
         }
 
         function submitNewsletter() {
+            const btn = document.getElementById('modal-submit-btn');
+            const originalText = btn.innerText;
+            btn.disabled = true;
+            btn.innerText = 'Küldés...';
+
             // Itt később beköthető az adatbázis
-            document.getElementById('newsletter-step-2').classList.add('hidden');
-            document.getElementById('newsletter-step-3').classList.remove('hidden');
-            
-            // 2 másodperc múlva bezárjuk
             setTimeout(() => {
-                closeNewsletterModal();
-            }, 2500);
+                document.getElementById('newsletter-step-2').classList.add('hidden');
+                document.getElementById('newsletter-step-3').classList.remove('hidden');
+
+                // 2 másodperc múlva bezárjuk
+                setTimeout(() => {
+                    closeNewsletterModal();
+                    // Reset modal state for next open
+                    setTimeout(() => {
+                        document.getElementById('newsletter-step-3').classList.add('hidden');
+                        document.getElementById('newsletter-step-1').classList.remove('hidden');
+                        btn.disabled = false;
+                        btn.innerText = originalText;
+                    }, 500);
+                }, 2500);
+            }, 1500);
+        }
+
+        function submitFooterNewsletter() {
+            const btn = document.getElementById('footer-submit-btn');
+            const successMsg = document.getElementById('footer-success-msg');
+            const emailInput = document.getElementById('footer-email');
+            const originalText = btn.innerText;
+
+            btn.disabled = true;
+            btn.innerText = 'Küldés...';
+
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.disabled = false;
+                emailInput.value = '';
+                successMsg.classList.remove('hidden');
+
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 5000);
+            }, 1500);
         }
 
         // --- KUPON MODAL LOGIKA (FRISSÍTVE TÖBB KUPONHOZ) ---
