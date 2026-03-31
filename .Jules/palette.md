@@ -1,0 +1,3 @@
+## 2026-03-31 - [UX & Accessibility Polish]
+**Learning:** For single-page static sites, managing the state of interactive elements like mobile menus and modals requires synchronization between visual state (icons, visibility) and accessibility state (ARIA attributes). Users also expect persistent dismissal of non-essential popups (newsletters, reviews) to avoid a repetitive and intrusive experience.
+**Action:** Always use a unified state management function (e.g., `toggleMenu`) for UI elements with multiple trigger points. Ensure all modals have `role="dialog"`, `aria-modal="true"`, and `aria-labelledby` for screen reader compatibility, and use `localStorage` to persist user dismissal of marketing popups.
