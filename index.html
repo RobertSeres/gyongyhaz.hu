@@ -321,7 +321,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -1318,17 +1318,30 @@
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+        const menuIcon = menuBtn.querySelector('i');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMenu(forceClose = false) {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            const shouldOpen = forceClose ? false : !isExpanded;
 
-        // Menü bezárása kattintáskor
+            mobileMenu.classList.toggle('hidden', !shouldOpen);
+            menuBtn.setAttribute('aria-expanded', shouldOpen);
+            menuBtn.setAttribute('aria-label', shouldOpen ? 'Menü bezárása' : 'Menü megnyitása');
+
+            // Ikon váltás
+            if (shouldOpen) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+
+        menuBtn.addEventListener('click', () => toggleMenu());
+
         mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+            link.addEventListener('click', () => toggleMenu(true));
         });
 
         // --- POPUP LOGIKA (REVIEW) ---
