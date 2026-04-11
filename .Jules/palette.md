@@ -1,0 +1,3 @@
+## 2025-05-14 - [A11y] Consistent Focus States and Accessible Forms
+**Learning:** In this Tailwind-based static project, many interactive elements (mobile menu, star ratings, email inputs) lacked visible focus states due to `focus:outline-none` or missing ring utilities. Additionally, icon-only buttons and background-only links (stars) provided no context to screen readers.
+**Action:** Always pair `focus:outline-none` with `focus:ring-2 focus:ring-pastel-purple` to maintain the design system's aesthetic while ensuring keyboard accessibility. Use `sr-only` labels for form inputs that don't have visible labels to provide context without breaking the visual layout.
