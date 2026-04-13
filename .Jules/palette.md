@@ -1,0 +1,3 @@
+## 2025-04-13 - Accessible Mobile Navigation and Interactive Elements
+**Learning:** Mobile menus often suffer from disconnected visual and semantic states when managed by simple `classList.toggle` calls. Interactive elements like social links and popups frequently lack descriptive ARIA labels, making them invisible to screen readers.
+**Action:** Use a unified `toggleMenu` function to synchronize `aria-expanded`, `aria-controls`, `aria-hidden`, and dynamic `aria-label` with visual changes (CSS classes and icon swaps). Always provide `sr-only` labels for form inputs and descriptive `aria-label` for icon-only buttons.
