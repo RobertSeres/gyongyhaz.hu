@@ -1107,12 +1107,17 @@
                 <!-- Hírlevél Feliratkozás (ÚJ) -->
                 <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
                     <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider">Értesülj a kedvezményekről</h4>
-                    <div class="flex w-full max-w-sm">
-                        <input type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
-                        <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
-                            Értesülök!
+                    <form onsubmit="event.preventDefault(); submitFooterNewsletter(this);" class="flex w-full max-w-sm relative">
+                        <label for="footer-email" class="sr-only">Email címed</label>
+                        <input id="footer-email" type="email" required placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
+                        <button type="submit" class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors min-w-[100px] flex items-center justify-center">
+                            <span class="button-text">Értesülök!</span>
+                            <span class="loading-spinner hidden">
+                                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                            </span>
                         </button>
-                    </div>
+                    </form>
+                    <p id="footer-success-msg" aria-live="polite" class="text-pastel-purple text-xs mt-2 font-bold uppercase tracking-wider hidden">Sikeres feliratkozás! Köszönjük.</p>
                 </div>
 
                 <!-- Social Media -->
@@ -1381,6 +1386,33 @@
             setTimeout(() => {
                 closeNewsletterModal();
             }, 2500);
+        }
+
+        function submitFooterNewsletter(form) {
+            const btn = form.querySelector('button');
+            const btnText = btn.querySelector('.button-text');
+            const spinner = btn.querySelector('.loading-spinner');
+            const successMsg = document.getElementById('footer-success-msg');
+
+            // Loading state
+            btn.disabled = true;
+            btnText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+
+            // Simulate API call
+            setTimeout(() => {
+                // Success state
+                spinner.classList.add('hidden');
+                btnText.classList.remove('hidden');
+                successMsg.classList.remove('hidden');
+                form.reset();
+
+                // Reset button and hide message after a few seconds
+                setTimeout(() => {
+                    btn.disabled = false;
+                    successMsg.classList.add('hidden');
+                }, 3000);
+            }, 1500);
         }
 
         // --- KUPON MODAL LOGIKA (FRISSÍTVE TÖBB KUPONHOZ) ---
