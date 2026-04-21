@@ -1,0 +1,3 @@
+## 2025-05-15 - [Footer Newsletter Feedback and Accessibility]
+**Learning:** For static sites without a backend, users still expect feedback on form interactions. Providing a mock asynchronous feedback loop (loading spinner -> success message) prevents "click anxiety" and clarifies that the action was recorded. Additionally, icon-only buttons (like 'X' close buttons) and email inputs in compact layouts are common accessibility blind spots that require explicit ARIA labels and 'sr-only' labels.
+**Action:** Always wrap interactive input groups in a semantic `<form>`, add `aria-label` to all icon-only buttons using the site's primary language, and use the `.sr-only` utility for labels that shouldn't disrupt the visual layout.
