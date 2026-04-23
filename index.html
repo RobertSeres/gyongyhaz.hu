@@ -1107,11 +1107,16 @@
                 <!-- Hírlevél Feliratkozás (ÚJ) -->
                 <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
                     <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider">Értesülj a kedvezményekről</h4>
-                    <div class="flex w-full max-w-sm">
-                        <input type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
-                        <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
-                            Értesülök!
+                    <form id="footer-newsletter-form" onsubmit="event.preventDefault(); submitFooterNewsletter(this);" class="flex w-full max-w-sm">
+                        <label for="footer-email" class="sr-only">Email cím</label>
+                        <input type="email" id="footer-email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
+                        <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors min-w-[120px]">
+                            <span class="button-text">Értesülök!</span>
+                            <i class="fa-solid fa-circle-notch fa-spin loading-spinner hidden"></i>
                         </button>
+                    </form>
+                    <div id="footer-success-msg" class="hidden text-pastel-purple text-xs mt-2 font-bold uppercase" aria-live="polite">
+                        Sikeres feliratkozás!
                     </div>
                 </div>
 
@@ -1370,6 +1375,37 @@
         function backToNewsletterStep1() {
             document.getElementById('newsletter-step-2').classList.add('hidden');
             document.getElementById('newsletter-step-1').classList.remove('hidden');
+        }
+
+        function submitFooterNewsletter(form) {
+            const button = form.querySelector('button');
+            const buttonText = button.querySelector('.button-text');
+            const spinner = button.querySelector('.loading-spinner');
+            const successMsg = document.getElementById('footer-success-msg');
+
+            // Betöltési állapot aktiválása
+            button.disabled = true;
+            buttonText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+
+            // Szimulált beküldés
+            setTimeout(() => {
+                // Betöltési állapot kikapcsolása
+                button.disabled = false;
+                buttonText.classList.remove('hidden');
+                spinner.classList.add('hidden');
+
+                // Mező ürítése
+                form.reset();
+
+                // Siker üzenet mutatása
+                successMsg.classList.remove('hidden');
+
+                // Üzenet elrejtése 3 másodperc múlva
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 3000);
+            }, 1000);
         }
 
         function submitNewsletter() {
