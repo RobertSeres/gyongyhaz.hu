@@ -1,0 +1,3 @@
+## 2025-05-14 - [Accessibility & UX Refinements]
+**Learning:** Decorative icons (Font Awesome) should always have `aria-hidden="true"` to avoid screen reader clutter. Multi-step modals benefit from a persistent close button at the container level to ensure users can exit at any stage. Async forms (like newsletters) need immediate visual feedback (spinners/success messages) and ARIA live regions to be accessible and user-friendly.
+**Action:** When applying site-wide attribute changes (e.g., using `sed`), always perform a follow-up check to ensure attributes aren't duplicated. Use `sr-only` labels for all form inputs that don't have visible labels.
