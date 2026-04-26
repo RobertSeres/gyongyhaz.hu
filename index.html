@@ -321,7 +321,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -1108,7 +1108,8 @@
                 <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
                     <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider">Értesülj a kedvezményekről</h4>
                     <div class="flex w-full max-w-sm">
-                        <input type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
+                        <label for="footer-email" class="sr-only">Email címed hírlevélre</label>
+                        <input id="footer-email" type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
                         <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
                             Értesülök!
                         </button>
@@ -1117,10 +1118,10 @@
 
                 <!-- Social Media -->
                 <div class="w-full md:w-1/3 flex justify-center md:justify-end gap-6">
-                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" rel="noopener noreferrer" aria-label="Facebook oldalunk" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
-                    <a href="#" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram oldalunk" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
@@ -1136,7 +1137,7 @@
     <!-- STICKY POPUP (ÉRTÉKELÉS) -->
     <div id="review-popup" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
         <!-- Bezárás gomb -->
-        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none">&times;</button>
+        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none" aria-label="Bezárás">&times;</button>
         
         <h4 class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
         <p class="font-hero font-bold uppercase text-center text-pastel-purple mb-4 text-lg">Értékelj minket!</p>
@@ -1212,7 +1213,7 @@
     <div id="coupon-modal-1" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
+            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
                 <i class="fa-solid fa-times text-sm"></i>
             </button>
             
@@ -1260,7 +1261,7 @@
     <div id="coupon-modal-2" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
+            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
                 <i class="fa-solid fa-times text-sm"></i>
             </button>
             
@@ -1319,15 +1320,32 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
+        function toggleMenu(forceClose = false) {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            const shouldOpen = !forceClose && isHidden;
+
+            if (shouldOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                menuBtn.setAttribute('aria-label', 'Menü bezárása');
+                menuBtn.innerHTML = '<i class="fa-solid fa-times"></i>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Menü megnyitása');
+                menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            }
+        }
+
         // Menü nyitás/zárás
         menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            toggleMenu();
         });
 
         // Menü bezárása kattintáskor
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                toggleMenu(true);
             });
         });
 
