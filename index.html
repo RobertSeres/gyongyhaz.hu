@@ -290,6 +290,10 @@
     </style>
 </head>
 <body class="font-body text-dark-bg overflow-x-hidden">
+    <!-- Skip to content link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:bg-pastel-purple focus:text-white focus:px-4 focus:py-2 focus:ring-2 focus:ring-black focus:outline-none">
+        Ugrás a tartalomra
+    </a>
 
     <!-- ANIMÁLT HÁTTÉR CANVAS (Glow) -->
     <canvas id="bg-canvas"></canvas>
@@ -321,7 +325,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
+                <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50 focus:ring-2 focus:ring-pastel-purple" aria-label="Menü megnyitása" aria-expanded="false" aria-controls="mobile-menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
             </div>
@@ -370,6 +374,7 @@
     </header>
 
     <!-- RÖVID BEMUTATKOZÁS -->
+    <main id="main-content" tabindex="-1" class="focus:outline-none">
     <section id="about" class="py-16 md:py-24 px-4 md:px-6 bg-transparent">
         <div class="max-w-5xl mx-auto text-center bg-white/95 backdrop-blur-md p-8 md:p-12 border border-pastel-purple shadow-xl rounded-sm" data-aos="fade-up">
             <h2 class="font-hero text-3xl md:text-6xl font-bold mb-6 md:mb-8 uppercase text-pastel-purple">Rólunk</h2>
@@ -1047,42 +1052,42 @@
                 
                 <!-- 5. Csillag -->
                 <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-                   target="_blank" 
+                   target="_blank" rel="noopener noreferrer"
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
-                   title="5 csillag">
-                    <i class="fa-solid fa-star"></i>
+                   aria-label="Értékelés: 5 csillag">
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
                 </a>
 
                 <!-- 4. Csillag -->
                 <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-                   target="_blank" 
+                   target="_blank" rel="noopener noreferrer"
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
-                   title="4 csillag">
-                    <i class="fa-solid fa-star"></i>
+                   aria-label="Értékelés: 4 csillag">
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
                 </a>
 
                 <!-- 3. Csillag -->
                 <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-                   target="_blank" 
+                   target="_blank" rel="noopener noreferrer"
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
-                   title="3 csillag">
-                    <i class="fa-solid fa-star"></i>
+                   aria-label="Értékelés: 3 csillag">
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
                 </a>
 
                 <!-- 2. Csillag -->
                 <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-                   target="_blank" 
+                   target="_blank" rel="noopener noreferrer"
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
-                   title="2 csillag">
-                    <i class="fa-solid fa-star"></i>
+                   aria-label="Értékelés: 2 csillag">
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
                 </a>
 
                 <!-- 1. Csillag -->
                 <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-                   target="_blank" 
+                   target="_blank" rel="noopener noreferrer"
                    class="peer text-4xl md:text-6xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 md:p-2 cursor-pointer"
-                   title="1 csillag">
-                    <i class="fa-solid fa-star"></i>
+                   aria-label="Értékelés: 1 csillag">
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
                 </a>
 
             </div>
@@ -1094,6 +1099,7 @@
     </section>
 
     <!-- FOOTER (BŐVÍTETT) -->
+    </main>
     <footer class="bg-dark-bg text-white py-12 md:py-16 border-t border-pastel-purple/30">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end text-center md:text-left gap-8">
@@ -1105,22 +1111,28 @@
                 </div>
 
                 <!-- Hírlevél Feliratkozás (ÚJ) -->
-                <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
+                <div class="w-full md:w-1/3 flex flex-col items-center md:items-start" id="footer-newsletter-container">
                     <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider">Értesülj a kedvezményekről</h4>
-                    <div class="flex w-full max-w-sm">
-                        <input type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
-                        <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
-                            Értesülök!
-                        </button>
-                    </div>
+                    <form onsubmit="event.preventDefault(); submitFooterNewsletter();" class="flex flex-col w-full max-w-sm gap-2" id="footer-newsletter-form" aria-label="Hírlevél feliratkozás">
+                        <div class="flex w-full">
+                            <label for="footer-email" class="sr-only">Email címed</label>
+                            <input type="email" id="footer-email" required placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
+                            <button type="submit" id="footer-newsletter-btn" class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap min-w-[110px]">
+                                Értesülök!
+                            </button>
+                        </div>
+                    </form>
+                    <p id="footer-newsletter-success" class="hidden text-pastel-purple text-sm font-bold mt-2 animate-pulse">
+                        <i class="fa-solid fa-check-circle mr-2"></i> Köszönjük a feliratkozást!
+                    </p>
                 </div>
 
                 <!-- Social Media -->
                 <div class="w-full md:w-1/3 flex justify-center md:justify-end gap-6">
-                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" rel="noopener noreferrer" aria-label="Facebook oldalunk" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
                         <i class="fa-brands fa-facebook"></i>
                     </a>
-                    <a href="#" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                    <a href="#" aria-label="Instagram oldalunk" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                 </div>
@@ -1134,35 +1146,37 @@
     </footer>
 
     <!-- STICKY POPUP (ÉRTÉKELÉS) -->
-    <div id="review-popup" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
+    <div id="review-popup" role="dialog" aria-labelledby="review-popup-title" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
         <!-- Bezárás gomb -->
-        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none">&times;</button>
+        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none" aria-label="Bezárás">&times;</button>
         
-        <h4 class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
+        <h4 id="review-popup-title" class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
         <p class="font-hero font-bold uppercase text-center text-pastel-purple mb-4 text-lg">Értékelj minket!</p>
         
         <!-- Csillagok (Kicsiben) -->
         <div class="flex justify-center items-center flex-row-reverse gap-1">
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="Értékelés: 5 csillag" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="Értékelés: 4 csillag" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="Értékelés: 3 csillag" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="Értékelés: 2 csillag" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="Értékelés: 1 csillag" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
         </div>
     </div>
 
     <!-- ENTRY POPUP (MARKETING / HÍRLEVÉL) -->
-    <div id="newsletter-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-500">
+    <div id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-500">
         <div class="bg-white p-8 md:p-10 max-w-md w-[90%] text-center border-2 border-pastel-purple shadow-2xl relative transform scale-95 transition-transform duration-300" id="newsletter-content">
+            <!-- Bezárás gomb -->
+            <button onclick="closeNewsletterModal()" class="absolute top-2 right-2 text-gray-400 hover:text-black text-2xl leading-none p-2" aria-label="Bezárás">&times;</button>
             
             <!-- STEP 1: AJÁNLAT -->
             <div id="newsletter-step-1">
-                <h2 class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 text-black">Ragyogj <span class="text-pastel-purple">Okosabban!</span></h2>
+                <h2 id="newsletter-title" class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 text-black">Ragyogj <span class="text-pastel-purple">Okosabban!</span></h2>
                 <p class="text-gray-600 mb-8 leading-relaxed text-sm md:text-base">
                     Ne hagyd, hogy a legjobb időpontok és a szezonális kedvezmények elillanjanak! Csatlakozz <strong>VIP listánkhoz</strong>, és mi azonnal szólunk, ha szabadul fel hely vagy akciót hirdetünk.
                 </p>
@@ -1188,9 +1202,10 @@
                 <p class="text-gray-600 mb-6 text-sm">
                     Add meg az email címed, hogy elsőként értesülhess.
                 </p>
-                <form onsubmit="event.preventDefault(); submitNewsletter();" class="flex flex-col gap-4">
-                    <input type="email" required placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
-                    <button type="submit" class="w-full bg-pastel-purple text-white py-3 font-bold uppercase tracking-wider hover:bg-purple-400 transition shadow-lg mt-2">
+                <form onsubmit="event.preventDefault(); submitNewsletter();" class="flex flex-col gap-4" aria-label="VIP feliratkozás">
+                    <label for="newsletter-email" class="sr-only">Email címed</label>
+                    <input type="email" id="newsletter-email" required placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
+                    <button type="submit" id="newsletter-submit-btn" class="w-full bg-pastel-purple text-white py-3 font-bold uppercase tracking-wider hover:bg-purple-400 transition shadow-lg mt-2 transition-all duration-300">
                         Feliratkozom!
                     </button>
                 </form>
@@ -1209,11 +1224,11 @@
     </div>
 
     <!-- KUPON MODAL 1 (MŰKÖRÖM) -->
-    <div id="coupon-modal-1" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="coupon-modal-1" role="dialog" aria-modal="true" aria-labelledby="coupon-modal-1-title" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
-                <i class="fa-solid fa-times text-sm"></i>
+            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
+                <i class="fa-solid fa-times text-sm" aria-hidden="true"></i>
             </button>
             
             <!-- Kép (NO FACE) -->
@@ -1224,12 +1239,12 @@
             <!-- Tartalom -->
             <div class="p-6 md:p-8">
                 <div class="flex justify-between items-start mb-2">
-                    <div class="flex text-pastel-purple text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="flex text-pastel-purple text-sm" aria-label="Értékelés: 5 csillag">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                 </div>
                 
-                <h3 class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Műköröm Bérlet</h3>
+                <h3 id="coupon-modal-1-title" class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Műköröm Bérlet</h3>
                 
                 <div class="flex items-center gap-4 mb-4">
                     <span class="text-2xl font-bold text-black">35 990 Ft</span>
@@ -1257,11 +1272,11 @@
     </div>
 
     <!-- KUPON MODAL 2 (GÉLLAKK) -->
-    <div id="coupon-modal-2" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="coupon-modal-2" role="dialog" aria-modal="true" aria-labelledby="coupon-modal-2-title" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
-                <i class="fa-solid fa-times text-sm"></i>
+            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
+                <i class="fa-solid fa-times text-sm" aria-hidden="true"></i>
             </button>
             
             <!-- Kép (NO FACE) -->
@@ -1272,12 +1287,12 @@
             <!-- Tartalom -->
             <div class="p-6 md:p-8">
                 <div class="flex justify-between items-start mb-2">
-                    <div class="flex text-pastel-purple text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="flex text-pastel-purple text-sm" aria-label="Értékelés: 5 csillag">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                 </div>
                 
-                <h3 class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Géllakk Bérlet</h3>
+                <h3 id="coupon-modal-2-title" class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Géllakk Bérlet</h3>
                 
                 <div class="flex items-center gap-4 mb-4">
                     <span class="text-2xl font-bold text-black">29 000 Ft</span>
@@ -1319,16 +1334,28 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
-        // Menü nyitás/zárás
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        function toggleMenu(forceClose = false) {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            const shouldOpen = !forceClose && isHidden;
+            const icon = menuBtn.querySelector('i');
 
-        // Menü bezárása kattintáskor
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            if (shouldOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.setAttribute('aria-expanded', 'true');
+                menuBtn.setAttribute('aria-label', 'Menü bezárása');
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
                 mobileMenu.classList.add('hidden');
-            });
+                menuBtn.setAttribute('aria-expanded', 'false');
+                menuBtn.setAttribute('aria-label', 'Menü megnyitása');
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        }
+
+        menuBtn.addEventListener('click', () => toggleMenu());
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => toggleMenu(true));
         });
 
         // --- POPUP LOGIKA (REVIEW) ---
@@ -1381,6 +1408,32 @@
             setTimeout(() => {
                 closeNewsletterModal();
             }, 2500);
+        }
+
+        function submitFooterNewsletter() {
+            const form = document.getElementById('footer-newsletter-form');
+            const btn = document.getElementById('footer-newsletter-btn');
+            const successMsg = document.getElementById('footer-newsletter-success');
+
+            // Loading state
+            btn.disabled = true;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Küldés...';
+
+            setTimeout(() => {
+                // Success state
+                form.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+
+                // Reset after 5 seconds
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                    form.classList.remove('hidden');
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                    form.reset();
+                }, 5000);
+            }, 2000);
         }
 
         // --- KUPON MODAL LOGIKA (FRISSÍTVE TÖBB KUPONHOZ) ---
