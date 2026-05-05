@@ -1105,14 +1105,15 @@
                 </div>
 
                 <!-- Hírlevél Feliratkozás (ÚJ) -->
-                <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
+                <div class="w-full md:w-1/3 flex flex-col items-center md:items-start" id="footer-newsletter-container">
                     <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider">Értesülj a kedvezményekről</h4>
-                    <div class="flex w-full max-w-sm">
-                        <input type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
-                        <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
+                    <form onsubmit="event.preventDefault(); submitFooterNewsletter();" class="flex w-full max-w-sm">
+                        <label for="footer-email" class="sr-only">Email cím a hírlevélhez</label>
+                        <input id="footer-email" type="email" required placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
+                        <button id="footer-newsletter-btn" type="submit" class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors whitespace-nowrap">
                             Értesülök!
                         </button>
-                    </div>
+                    </form>
                 </div>
 
                 <!-- Social Media -->
@@ -1381,6 +1382,31 @@
             setTimeout(() => {
                 closeNewsletterModal();
             }, 2500);
+        }
+
+        function submitFooterNewsletter() {
+            const btn = document.getElementById('footer-newsletter-btn');
+            const input = document.getElementById('footer-email');
+            const container = document.getElementById('footer-newsletter-container');
+
+            if (!btn || !input || !container) return;
+
+            // Loading állapot
+            btn.disabled = true;
+            btn.innerHTML = 'Küldés...';
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+            input.disabled = true;
+
+            setTimeout(() => {
+                // Siker üzenet
+                container.innerHTML = `
+                    <div class="flex flex-col items-center md:items-start animate-[slideDown_0.4s_ease-out]">
+                        <i class="fa-solid fa-check-circle text-pastel-purple text-3xl mb-2"></i>
+                        <h4 class="font-hero text-lg font-bold uppercase text-white tracking-wider">Köszönjük!</h4>
+                        <p class="text-gray-400 text-sm">Sikeresen feliratkoztál.</p>
+                    </div>
+                `;
+            }, 1500);
         }
 
         // --- KUPON MODAL LOGIKA (FRISSÍTVE TÖBB KUPONHOZ) ---
