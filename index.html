@@ -290,6 +290,11 @@
     </style>
 </head>
 <body class="font-body text-dark-bg overflow-x-hidden">
+    <!-- Skip to content link -->
+    <a href="#main-content"
+       class="sr-only focus:not-sr-only absolute top-4 left-4 bg-pastel-purple text-dark-bg px-6 py-3 rounded-full z-[100] shadow-2xl focus:ring-4 focus:ring-white/50 focus:outline-none transition-all duration-300 font-bold uppercase tracking-wider text-sm">
+        Ugrás a tartalomra
+    </a>
 
     <!-- ANIMÁLT HÁTTÉR CANVAS (Glow) -->
     <canvas id="bg-canvas"></canvas>
@@ -337,6 +342,7 @@
         </div>
     </nav>
 
+    <main id="main-content" tabindex="-1" class="focus:outline-none">
     <!-- HERO SECTION -->
     <header class="relative h-screen w-full overflow-hidden flex flex-col justify-end border-b border-pastel-purple bg-white">
         <!-- Háttérkép (EREDETI VISSZAÁLLÍTVA) -->
@@ -1092,6 +1098,7 @@
             </p>
         </div>
     </section>
+    </main>
 
     <!-- FOOTER (BŐVÍTETT) -->
     <footer class="bg-dark-bg text-white py-12 md:py-16 border-t border-pastel-purple/30">
