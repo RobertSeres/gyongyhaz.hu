@@ -290,6 +290,10 @@
     </style>
 </head>
 <body class="font-body text-dark-bg overflow-x-hidden">
+    <!-- Ugrás a tartalomra -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-pastel-purple text-dark-bg px-4 py-2 font-bold z-[100] rounded-full shadow-lg">
+        Ugrás a tartalomra
+    </a>
 
     <!-- ANIMÁLT HÁTTÉR CANVAS (Glow) -->
     <canvas id="bg-canvas"></canvas>
@@ -322,7 +326,7 @@
 
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden text-2xl text-black p-2 focus:outline-none z-50" aria-label="Menü megnyitása">
-                    <i class="fa-solid fa-bars"></i>
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
@@ -337,8 +341,9 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header class="relative h-screen w-full overflow-hidden flex flex-col justify-end border-b border-pastel-purple bg-white">
+    <main id="main-content" tabindex="-1" class="focus:outline-none">
+        <!-- HERO SECTION -->
+        <header class="relative h-screen w-full overflow-hidden flex flex-col justify-end border-b border-pastel-purple bg-white">
         <!-- Háttérkép (EREDETI VISSZAÁLLÍTVA) -->
         <div class="absolute inset-0 z-0">
              <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=1920&auto=format&fit=crop" 
@@ -1092,6 +1097,7 @@
             </p>
         </div>
     </section>
+    </main>
 
     <!-- FOOTER (BŐVÍTETT) -->
     <footer class="bg-dark-bg text-white py-12 md:py-16 border-t border-pastel-purple/30">
@@ -1117,11 +1123,11 @@
 
                 <!-- Social Media -->
                 <div class="w-full md:w-1/3 flex justify-center md:justify-end gap-6">
-                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
-                        <i class="fa-brands fa-facebook"></i>
+                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" rel="noopener noreferrer" aria-label="Facebook oldalunk" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
-                        <i class="fa-brands fa-instagram"></i>
+                    <a href="#" rel="noopener noreferrer" aria-label="Instagram oldalunk" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
