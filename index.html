@@ -762,7 +762,12 @@
                         <!-- KUPON GRID -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                              <!-- KUPON KÁRTYA 1 (Műköröm) -->
-                             <div onclick="openCouponModal('coupon-modal-1')" class="cursor-pointer bg-white border border-pastel-purple p-6 hover:shadow-xl transition-all duration-300 group h-full flex flex-col justify-between relative overflow-hidden">
+                             <div onclick="openCouponModal('coupon-modal-1')"
+                                  onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); this.click(); }"
+                                  role="button"
+                                  tabindex="0"
+                                  aria-label="5 Alkalmas Műköröm Bérlet részletei"
+                                  class="cursor-pointer bg-white border border-pastel-purple p-6 hover:shadow-xl transition-all duration-300 group h-full flex flex-col justify-between relative overflow-hidden focus:ring-2 focus:ring-pastel-purple focus:outline-none focus:ring-inset">
                                 <div>
                                     <h4 class="font-hero font-bold uppercase text-lg mb-2 text-black">5 Alkalmas Bérlet</h4>
                                     <p class="text-xs text-gray-500 mb-4 uppercase tracking-wide">Műköröm töltés / építés</p>
@@ -774,7 +779,12 @@
                             </div>
 
                              <!-- KUPON KÁRTYA 2 (Géllakk) -->
-                             <div onclick="openCouponModal('coupon-modal-2')" class="cursor-pointer bg-white border border-pastel-purple p-6 hover:shadow-xl transition-all duration-300 group h-full flex flex-col justify-between relative overflow-hidden">
+                             <div onclick="openCouponModal('coupon-modal-2')"
+                                  onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); this.click(); }"
+                                  role="button"
+                                  tabindex="0"
+                                  aria-label="5 Alkalmas Géllakk Bérlet részletei"
+                                  class="cursor-pointer bg-white border border-pastel-purple p-6 hover:shadow-xl transition-all duration-300 group h-full flex flex-col justify-between relative overflow-hidden focus:ring-2 focus:ring-pastel-purple focus:outline-none focus:ring-inset">
                                 <div>
                                     <h4 class="font-hero font-bold uppercase text-lg mb-2 text-black">5 Alkalmas Bérlet</h4>
                                     <p class="text-xs text-gray-500 mb-4 uppercase tracking-wide">Géllakk</p>
