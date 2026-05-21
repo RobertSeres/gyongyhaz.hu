@@ -1,0 +1,3 @@
+## 2025-05-14 - Landmark and Keyboard Navigation Foundation
+**Learning:** In legacy monolithic HTML projects with fixed navigation, structural improvements like adding `<main>` landmarks and 'Skip to Content' links are the highest priority and should be the first check in an accessibility audit; they significantly reduce repetitive tabbing for keyboard users and provide high immediate value with minimal code churn.
+**Action:** Prioritize landmark audits in static landing pages. Use a "Skip to Content" link targeting a `<main>` element with `tabindex="-1"` to ensure immediate keyboard focus shift and screen reader context.
