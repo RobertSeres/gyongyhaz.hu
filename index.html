@@ -290,6 +290,10 @@
     </style>
 </head>
 <body class="font-body text-dark-bg overflow-x-hidden">
+    <!-- Ugrás a tartalomra link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-pastel-purple focus:text-dark-bg focus:font-bold focus:shadow-2xl focus:outline-none">
+        Ugrás a tartalomra
+    </a>
 
     <!-- ANIMÁLT HÁTTÉR CANVAS (Glow) -->
     <canvas id="bg-canvas"></canvas>
@@ -337,6 +341,7 @@
         </div>
     </nav>
 
+    <main id="main-content" tabindex="-1" class="focus:outline-none">
     <!-- HERO SECTION -->
     <header class="relative h-screen w-full overflow-hidden flex flex-col justify-end border-b border-pastel-purple bg-white">
         <!-- Háttérkép (EREDETI VISSZAÁLLÍTVA) -->
@@ -762,7 +767,7 @@
                         <!-- KUPON GRID -->
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                              <!-- KUPON KÁRTYA 1 (Műköröm) -->
-                             <div onclick="openCouponModal('coupon-modal-1')" class="cursor-pointer bg-white border border-pastel-purple p-6 hover:shadow-xl transition-all duration-300 group h-full flex flex-col justify-between relative overflow-hidden">
+                             <div onclick="openCouponModal('coupon-modal-1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCouponModal('coupon-modal-1')}" role="button" tabindex="0" aria-label="Műköröm bérlet részletei" class="cursor-pointer bg-white border border-pastel-purple p-6 hover:shadow-xl transition-all duration-300 group h-full flex flex-col justify-between relative overflow-hidden focus:ring-2 focus:ring-pastel-purple focus:outline-none focus:ring-inset">
                                 <div>
                                     <h4 class="font-hero font-bold uppercase text-lg mb-2 text-black">5 Alkalmas Bérlet</h4>
                                     <p class="text-xs text-gray-500 mb-4 uppercase tracking-wide">Műköröm töltés / építés</p>
@@ -774,7 +779,7 @@
                             </div>
 
                              <!-- KUPON KÁRTYA 2 (Géllakk) -->
-                             <div onclick="openCouponModal('coupon-modal-2')" class="cursor-pointer bg-white border border-pastel-purple p-6 hover:shadow-xl transition-all duration-300 group h-full flex flex-col justify-between relative overflow-hidden">
+                             <div onclick="openCouponModal('coupon-modal-2')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openCouponModal('coupon-modal-2')}" role="button" tabindex="0" aria-label="Géllakk bérlet részletei" class="cursor-pointer bg-white border border-pastel-purple p-6 hover:shadow-xl transition-all duration-300 group h-full flex flex-col justify-between relative overflow-hidden focus:ring-2 focus:ring-pastel-purple focus:outline-none focus:ring-inset">
                                 <div>
                                     <h4 class="font-hero font-bold uppercase text-lg mb-2 text-black">5 Alkalmas Bérlet</h4>
                                     <p class="text-xs text-gray-500 mb-4 uppercase tracking-wide">Géllakk</p>
@@ -958,19 +963,19 @@
             <h2 class="font-hero text-3xl md:text-4xl font-bold uppercase mb-8 md:mb-12 text-center text-pastel-purple">Galéria</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
                 <div class="row-span-2 col-span-1 sm:col-span-2 border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in">
-                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Hajstílus galéria kép 1">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
                 <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="50">
-                    <img src="https://images.unsplash.com/photo-1632345031635-7b80009a65b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1632345031635-7b80009a65b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Műköröm galéria kép 1">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
                 <div class="border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Körömápolás galéria kép 2">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
                 <div class="col-span-1 sm:col-span-2 border border-pastel-purple overflow-hidden group relative box-card" data-aos="fade-in" data-aos-delay="150">
-                    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" loading="lazy" alt="Masszázs galéria kép 1">
                     <div class="absolute inset-0 bg-purple-900/0 group-hover:bg-purple-900/20 transition duration-300"></div>
                 </div>
             </div>
@@ -1093,6 +1098,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- FOOTER (BŐVÍTETT) -->
     <footer class="bg-dark-bg text-white py-12 md:py-16 border-t border-pastel-purple/30">
         <div class="max-w-7xl mx-auto px-6">
@@ -1106,10 +1113,10 @@
 
                 <!-- Hírlevél Feliratkozás (ÚJ) -->
                 <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
-                    <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider">Értesülj a kedvezményekről</h4>
+                    <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider" id="footer-newsletter-label">Értesülj a kedvezményekről</h4>
                     <div class="flex w-full max-w-sm">
-                        <input type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
-                        <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
+                        <input type="email" aria-labelledby="footer-newsletter-label" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
+                        <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors" aria-label="Feliratkozás a hírlevélre">
                             Értesülök!
                         </button>
                     </div>
@@ -1134,11 +1141,11 @@
     </footer>
 
     <!-- STICKY POPUP (ÉRTÉKELÉS) -->
-    <div id="review-popup" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
+    <div id="review-popup" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm" role="dialog" aria-labelledby="review-popup-title">
         <!-- Bezárás gomb -->
-        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none">&times;</button>
+        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none" aria-label="Bezárás">&times;</button>
         
-        <h4 class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
+        <h4 id="review-popup-title" class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
         <p class="font-hero font-bold uppercase text-center text-pastel-purple mb-4 text-lg">Értékelj minket!</p>
         
         <!-- Csillagok (Kicsiben) -->
@@ -1189,8 +1196,9 @@
                     Add meg az email címed, hogy elsőként értesülhess.
                 </p>
                 <form onsubmit="event.preventDefault(); submitNewsletter();" class="flex flex-col gap-4">
-                    <input type="email" required placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
-                    <button type="submit" class="w-full bg-pastel-purple text-white py-3 font-bold uppercase tracking-wider hover:bg-purple-400 transition shadow-lg mt-2">
+                    <label for="newsletter-email" class="sr-only">Email címed</label>
+                    <input type="email" id="newsletter-email" required placeholder="Az email címed..." class="w-full border-b-2 border-pastel-purple p-3 text-center focus:outline-none text-lg bg-transparent placeholder-gray-400">
+                    <button type="submit" class="w-full bg-pastel-purple text-white py-3 font-bold uppercase tracking-wider hover:bg-purple-400 transition shadow-lg mt-2" aria-label="Feliratkozás">
                         Feliratkozom!
                     </button>
                 </form>
@@ -1209,11 +1217,11 @@
     </div>
 
     <!-- KUPON MODAL 1 (MŰKÖRÖM) -->
-    <div id="coupon-modal-1" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="coupon-modal-1" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-labelledby="coupon-modal-1-title">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
-                <i class="fa-solid fa-times text-sm"></i>
+            <button onclick="closeCouponModal('coupon-modal-1')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
+                <i class="fa-solid fa-times text-sm" aria-hidden="true"></i>
             </button>
             
             <!-- Kép (NO FACE) -->
@@ -1229,7 +1237,7 @@
                     </div>
                 </div>
                 
-                <h3 class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Műköröm Bérlet</h3>
+                <h3 id="coupon-modal-1-title" class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Műköröm Bérlet</h3>
                 
                 <div class="flex items-center gap-4 mb-4">
                     <span class="text-2xl font-bold text-black">35 990 Ft</span>
@@ -1257,11 +1265,11 @@
     </div>
 
     <!-- KUPON MODAL 2 (GÉLLAKK) -->
-    <div id="coupon-modal-2" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="coupon-modal-2" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-labelledby="coupon-modal-2-title">
         <div class="bg-white w-full max-w-md shadow-2xl relative overflow-hidden animate-[slideDown_0.4s_ease-out]">
             <!-- Bezárás gomb -->
-            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center">
-                <i class="fa-solid fa-times text-sm"></i>
+            <button onclick="closeCouponModal('coupon-modal-2')" class="absolute top-2 right-2 z-10 bg-white/90 border border-gray-300 rounded-none p-2 text-gray-600 hover:text-black hover:border-black transition w-8 h-8 flex items-center justify-center" aria-label="Bezárás">
+                <i class="fa-solid fa-times text-sm" aria-hidden="true"></i>
             </button>
             
             <!-- Kép (NO FACE) -->
@@ -1277,7 +1285,7 @@
                     </div>
                 </div>
                 
-                <h3 class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Géllakk Bérlet</h3>
+                <h3 id="coupon-modal-2-title" class="font-hero text-2xl md:text-3xl font-black uppercase mb-2 leading-none">5 Alkalmas <br>Géllakk Bérlet</h3>
                 
                 <div class="flex items-center gap-4 mb-4">
                     <span class="text-2xl font-bold text-black">29 000 Ft</span>
