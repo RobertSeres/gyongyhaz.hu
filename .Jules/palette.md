@@ -1,0 +1,3 @@
+## 2025-05-22 - Structural Landmark Pattern and Accessibility Labels
+**Learning:** In legacy monolithic HTML projects with fixed navigation, structural improvements like adding <main> landmarks and 'Skip to Content' links are the highest priority. They significantly reduce repetitive tabbing for keyboard users. Additionally, ensuring all form inputs have descriptive aria-labels (even when placeholders are present) is crucial for screen reader compatibility.
+**Action:** Always check for <main> landmarks and skip links in similar projects. Ensure all interactive elements have accessible names via labels or aria-labels.
