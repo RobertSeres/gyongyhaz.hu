@@ -290,6 +290,9 @@
     </style>
 </head>
 <body class="font-body text-dark-bg overflow-x-hidden">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[150] bg-pastel-purple text-dark-bg px-4 py-2 rounded-full font-bold shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-dark-bg focus:ring-offset-2">
+        Ugrás a tartalomra
+    </a>
 
     <!-- ANIMÁLT HÁTTÉR CANVAS (Glow) -->
     <canvas id="bg-canvas"></canvas>
@@ -336,6 +339,8 @@
             <a href="#contact" class="mobile-link btn-primary w-3/4 text-center mt-4">Időpontfoglalás</a>
         </div>
     </nav>
+
+    <main id="main-content" tabindex="-1" class="focus:outline-none">
 
     <!-- HERO SECTION -->
     <header class="relative h-screen w-full overflow-hidden flex flex-col justify-end border-b border-pastel-purple bg-white">
@@ -1093,6 +1098,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- FOOTER (BŐVÍTETT) -->
     <footer class="bg-dark-bg text-white py-12 md:py-16 border-t border-pastel-purple/30">
         <div class="max-w-7xl mx-auto px-6">
@@ -1107,21 +1114,21 @@
                 <!-- Hírlevél Feliratkozás (ÚJ) -->
                 <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
                     <h4 class="font-hero text-lg font-bold uppercase mb-4 text-white tracking-wider">Értesülj a kedvezményekről</h4>
-                    <div class="flex w-full max-w-sm">
-                        <input type="email" placeholder="Email címed..." class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
-                        <button class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
+                    <form class="flex w-full max-w-sm" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Email címed..." aria-label="Email cím a hírlevélhez" class="w-full bg-white/10 border border-white/20 text-white px-4 py-2 focus:outline-none focus:border-pastel-purple transition-colors text-sm">
+                        <button type="submit" class="bg-pastel-purple text-white px-4 py-2 font-bold uppercase text-sm hover:bg-white hover:text-pastel-purple transition-colors">
                             Értesülök!
                         </button>
-                    </div>
+                    </form>
                 </div>
 
                 <!-- Social Media -->
                 <div class="w-full md:w-1/3 flex justify-center md:justify-end gap-6">
-                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
-                        <i class="fa-brands fa-facebook"></i>
+                    <a href="https://www.facebook.com/p/Gy%C3%B6ngyi-Sz%C3%A9ps%C3%A9gstudi%C3%B3-100063836102018/" target="_blank" rel="noopener noreferrer" aria-label="Facebook oldalunk" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
-                        <i class="fa-brands fa-instagram"></i>
+                    <a href="#" aria-label="Instagram oldalunk" class="text-white hover:text-pastel-purple transition text-2xl hover:scale-110 transform duration-300">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
