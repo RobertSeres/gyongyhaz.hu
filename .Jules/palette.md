@@ -1,0 +1,3 @@
+## 2026-06-18 - Structural Landmark Pattern in Monolithic HTML
+**Learning:** In a single-page monolithic HTML site with fixed navigation, structural landmarks (<main>) paired with a 'Skip to Content' link provide the highest immediate accessibility ROI. Using `tabindex="-1"` on the `<main>` element allows programmatic focus shift without a persistent focus ring, ensuring a smooth transition for keyboard users.
+**Action:** Always wrap the primary content area (after the header/nav) in a `<main>` tag and provide a high-contrast, keyboard-visible 'Skip to Content' link as the first focusable element.
