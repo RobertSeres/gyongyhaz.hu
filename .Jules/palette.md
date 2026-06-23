@@ -1,0 +1,3 @@
+## 2025-05-14 - Structural Landmark Pattern
+**Learning:** In monolithic HTML projects with fixed navigation, a 'Skip to Content' link is essential for keyboard accessibility. However, to ensure the focus actually shifts to the target landmark (like `<main>`) across all browsers and testing environments (like Playwright), the target element must have `tabindex="-1"`. Adding `focus:outline-none` prevents a persistent focus ring that might confuse mouse users.
+**Action:** Pair 'Skip to Content' links with a `<main>` or similar landmark that includes `tabindex="-1"` and `class="focus:outline-none"`.
