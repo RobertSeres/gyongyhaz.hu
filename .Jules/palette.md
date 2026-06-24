@@ -1,0 +1,3 @@
+## 2025-05-14 - Structural Landmark Pattern for Monolithic Sites
+**Learning:** In legacy monolithic HTML projects with fixed navigation, structural improvements like adding `<main>` landmarks and 'Skip to Content' links provide the highest immediate accessibility value. Pairing a skip link with a `<main>` landmark that has `tabindex="-1"` and `focus:outline-none` ensures that keyboard focus shifts correctly to the content area without persistent visual artifacts.
+**Action:** Always implement the 'Ugrás a tartalomra' (Skip to Content) link and `<main>` landmark as the first priority in an accessibility audit for static single-page sites.
