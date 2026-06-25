@@ -1,0 +1,3 @@
+## 2025-05-15 - Structural Landmark Pattern
+**Learning:** In a monolithic single-page application with fixed navigation, pairing a "Skip to Content" link with a `<main>` landmark that has `tabindex="-1"` and `focus:outline-none` ensures that when a keyboard user jumps to the main content, the focus shifts correctly without a persistent focus ring, while still providing a clear landmark for screen reader users. Additionally, when using a fixed header, the skip link must have a higher `z-index` (e.g., `z-[100]`) to be visible above all other layers.
+**Action:** Always implement the `sr-only focus:fixed focus:not-sr-only` pattern for skip links at the very top of the `<body>` in similar landing page projects.
