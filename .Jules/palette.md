@@ -1,0 +1,3 @@
+## 2025-05-14 - Structural Landmark Pattern Implementation
+**Learning:** In legacy monolithic HTML projects with fixed navigation, structural improvements like adding <main> landmarks and 'Skip to Content' links are the highest priority and should be the first check in an accessibility audit; they significantly reduce repetitive tabbing for keyboard users and provide high immediate value with minimal code churn.
+**Action:** Pair a "Skip to Content" link (sr-only focus:not-sr-only) with a <main id="main-content" tabindex="-1" class="focus:outline-none"> landmark. Use focus:fixed and a high z-index (e.g., z-[150]) for the skip link to ensure it clears fixed headers and overlays.
