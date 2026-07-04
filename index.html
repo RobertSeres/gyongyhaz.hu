@@ -290,6 +290,11 @@
     </style>
 </head>
 <body class="font-body text-dark-bg overflow-x-hidden">
+    <!-- Ugrás a tartalomra link -->
+    <a href="#main-content"
+       class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-[150] bg-pastel-purple text-dark-bg p-4 font-bold rounded-md shadow-lg focus:ring-2 focus:ring-offset-2 focus:ring-pastel-purple focus:outline-none">
+        Ugrás a tartalomra
+    </a>
 
     <!-- ANIMÁLT HÁTTÉR CANVAS (Glow) -->
     <canvas id="bg-canvas"></canvas>
@@ -336,6 +341,9 @@
             <a href="#contact" class="mobile-link btn-primary w-3/4 text-center mt-4">Időpontfoglalás</a>
         </div>
     </nav>
+
+    <!-- Fő tartalom -->
+    <main id="main-content" tabindex="-1" class="focus:outline-none">
 
     <!-- HERO SECTION -->
     <header class="relative h-screen w-full overflow-hidden flex flex-col justify-end border-b border-pastel-purple bg-white">
@@ -1092,6 +1100,8 @@
             </p>
         </div>
     </section>
+
+    </main>
 
     <!-- FOOTER (BŐVÍTETT) -->
     <footer class="bg-dark-bg text-white py-12 md:py-16 border-t border-pastel-purple/30">
