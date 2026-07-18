@@ -1,0 +1,3 @@
+## 2026-01-07 - Interactive Custom Coupon Cards Accessibility
+**Learning:** Using styled custom `div` elements as clickable card wrappers (e.g., in the accordion sections) creates beautiful trigger buttons for modal overlays, but they remain completely invisible to keyboard and screen-reader users without explicit tabindexing, ARIA roles, keyup/keydown handlers, and descriptive labels in the localized language (Hungarian).
+**Action:** Always enrich custom `div` action cards with `role="button"`, `tabindex="0"`, standard keydown event checks for Enter and Space keys, and custom descriptive `aria-label` attributes localized to the page locale.
