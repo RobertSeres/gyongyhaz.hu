@@ -1,0 +1,3 @@
+## 2026-07-20 - Structural Landmark Pattern
+**Learning:** Pairing a "Skip to Content" link with a `<main>` landmark that has `tabindex="-1"` and `focus:outline-none` ensures keyboard navigation users can bypass header navigation elements cleanly. Specifying `tabindex="-1"` and `focus:outline-none` shifts focus to the main content correctly without showing a persistent focus ring.
+**Action:** Implement this pattern as a high-impact foundational accessibility victory when starting with raw HTML landing pages, and ensure `<main>` and `<footer>` are kept as sibling elements to preserve correct document semantic hierarchy.
