@@ -1,0 +1,3 @@
+## 2026-07-24 - Structural Landmark Pattern & Skip to Content Link
+**Learning:** Pairing a high-contrast, keyboard-focusable 'Skip to Content' (Ugrás a tartalomra) link with a main landmark element (`<main id="main-content" tabindex="-1" class="focus:outline-none">`) bypasses navigation block links correctly, satisfying WCAG 2.1 Success Criterion 2.4.1 (Bypass Blocks). Placing this link as the first child of `<body>` ensures that keyboard focus hits it first before any menus, headers, or overlays.
+**Action:** Ensure that all single-page applications and landing pages have a 'Skip to Content' link as the first focusable element inside the `<body>` and wrap main content sections in a properly structured `<main>` landmark with sibling `<footer>` element.
