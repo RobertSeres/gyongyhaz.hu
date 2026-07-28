@@ -1,0 +1,3 @@
+## 2026-03-06 - Structural Landmark Pattern
+**Learning:** Pairing a 'Skip to Content' link with a `<main>` landmark element that has `tabindex="-1"` and `focus:outline-none` satisfies WCAG 2.1 Success Criterion 2.4.1 (Bypass Blocks). It allows keyboard and screen reader users to skip repetitive navigation headers while shifting focus cleanly without persistent, distracting focus rings for sighted mouse users.
+**Action:** Always implement a skip-to-content link as the very first child of the `<body>` element, pointing directly to a `<main id="main-content" tabindex="-1" class="focus:outline-none">` landmark element that wraps all primary page content.
