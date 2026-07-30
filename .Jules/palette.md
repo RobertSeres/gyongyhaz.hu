@@ -1,0 +1,3 @@
+## 2026-03-06 - Structural Landmark Pattern
+**Learning:** Pairing a 'Skip to Content' link (e.g., 'Ugrás a tartalomra' in Hungarian) with a `<main id="main-content" tabindex="-1" class="focus:outline-none">` landmark allows keyboard users to bypass blocks (WCAG 2.1 SC 2.4.1) smoothly. The landmark must have `tabindex="-1"` and `class="focus:outline-none"` to receive programmatic focus cleanly without a persistent focus ring.
+**Action:** Always implement this pattern in single-page apps to improve keyboard and screen reader accessibility, ensuring the link is the first child of `<body>` and `<main>` wraps the primary content area.
