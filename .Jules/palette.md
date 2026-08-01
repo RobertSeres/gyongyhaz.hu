@@ -1,0 +1,3 @@
+## 2026-02-18 - The Structural Landmark Pattern for SPA Navigation
+**Learning:** Pairing a 'Skip to Content' link with a `<main>` landmark that has `tabindex="-1"` and `focus:outline-none` ensures that keyboard/screen reader users can skip repetitive navigation headers. Shifting the focus to a non-interactive `<main>` landmark programmatically or via target anchor navigates perfectly without a persistent visual outline, maintaining both usability and visual elegance.
+**Action:** When implementing bypass blocks for accessibility (WCAG 2.1 2.4.1), always wrap the page's core content in a `<main id="main-content" tabindex="-1" class="focus:outline-none">` block, and place the skip link as the very first child of the `<body>` element.
