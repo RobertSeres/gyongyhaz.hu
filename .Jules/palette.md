@@ -1,0 +1,3 @@
+## 2026-08-04 - Structural Landmark Pattern for Bypassing Blocks
+**Learning:** Pairing a 'Skip to Content' link with a `<main>` landmark that has `tabindex="-1"` and `focus:outline-none` allows keyboard and screen reader users to easily bypass repetitive navigation menus, shifting focus smoothly to the main content area without producing an unwanted visible focus ring on the main container.
+**Action:** Always place a 'Skip to Content' link immediately as the first child of the `<body>` element, and wrap the primary body sections in a `<main id="main-content" tabindex="-1" class="focus:outline-none">` element as a sibling of outer structures like navigation and footers.
