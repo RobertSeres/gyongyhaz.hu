@@ -1,0 +1,3 @@
+## 2026-02-12 - Hungarian Localization and Icon-only Interactive Element Accessibility
+**Learning:** Icon-only interactive elements like social media links or modal close buttons (e.g., using "x" or SVG/FontAwesome icons) are completely silent to screen readers. In a localized Hungarian single-page application like Gyöngy Ház, close buttons must be explicitly labeled with `aria-label="Bezárás"` to support Hungarian screen readers. External targets using `target="_blank"` must also include `rel="noopener noreferrer"` for security.
+**Action:** Ensure all icon-only buttons have localized `aria-label` attributes. Add `rel="noopener noreferrer"` to external anchors with `target="_blank"`.
