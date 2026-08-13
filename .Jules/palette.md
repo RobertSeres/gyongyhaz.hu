@@ -1,0 +1,3 @@
+## 2024-08-13 - Bypass Blocks Landmark & Keyboard Skip Link
+**Learning:** Monolithic single-page landing pages with extensive navigation and deep vertical content structures can be highly frustrating for keyboard and screen reader users to navigate. Implementing a 'Skip to Content' link paired with a designated `<main>` landmark with a proper focus shift ensures compliant accessibility (WCAG 2.4.1 Bypass Blocks) and a smooth keyboard experience.
+**Action:** Always implement a 'Skip to Content' link as the first focusable element inside the `<body>` on text-heavy or nav-heavy static websites. Pair it with a `<main>` landmark that has `tabindex="-1"` and `class="focus:outline-none"` to shift focus elegantly without persistent rings.
