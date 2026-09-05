@@ -1136,7 +1136,7 @@
     <!-- STICKY POPUP (ÉRTÉKELÉS) -->
     <div id="review-popup" class="fixed bottom-4 right-0 left-0 md:left-auto md:right-4 mx-auto md:mx-0 z-[60] max-w-xs w-[90%] bg-white/95 backdrop-blur-md border border-pastel-purple shadow-2xl p-6 transform translate-y-[200%] transition-transform duration-500 rounded-sm">
         <!-- Bezárás gomb -->
-        <button onclick="closePopup()" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none">&times;</button>
+        <button onclick="closePopup()" aria-label="Bezárás" class="absolute top-2 right-3 text-gray-400 hover:text-black text-2xl leading-none">&times;</button>
         
         <h4 class="font-hero font-bold uppercase text-center mb-1 text-sm text-black">Jártál már nálunk?</h4>
         <p class="font-hero font-bold uppercase text-center text-pastel-purple mb-4 text-lg">Értékelj minket!</p>
@@ -1144,15 +1144,15 @@
         <!-- Csillagok (Kicsiben) -->
         <div class="flex justify-center items-center flex-row-reverse gap-1">
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="5 csillag értékelése" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="4 csillag értékelése" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="3 csillag értékelése" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="2 csillag értékelése" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
              <a href="https://www.google.com/maps/place/Gy%C3%B6ngyi+Sz%C3%A9ps%C3%A9gst%C3%BAdi%C3%B3/@47.4493548,19.1715876,17z/data=!4m18!1m9!3m8!1s0x4741c336ec8972db:0xb8679f6a37894af9!2zR3nDtm5neWkgU3rDqXBzw6lnc3TDumRpw7M!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c!3m7!1s0x4741c336ec8972db:0xb8679f6a37894af9!8m2!3d47.4494838!4d19.171343!9m1!1b1!16s%2Fg%2F11q3c2hx_c?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoASAFQAw%3D%3D" 
-               target="_blank" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star"></i></a>
+               target="_blank" rel="noopener noreferrer" aria-label="1 csillag értékelése" class="peer text-2xl text-gray-300 hover:text-yellow-400 hover:scale-110 peer-hover:text-yellow-400 transition-all duration-200 p-1 cursor-pointer"><i class="fa-solid fa-star" aria-hidden="true"></i></a>
         </div>
     </div>
 
