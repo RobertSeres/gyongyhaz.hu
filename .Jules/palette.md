@@ -1,0 +1,3 @@
+## 2024-10-14 - Structural Landmark Pattern for Skip Links
+**Learning:** Pairing a 'Skip to Content' link as the first child of `<body>` with a `<main id="main-content" tabindex="-1">` landmark ensures keyboard navigation bypasses top headers cleanly without leaving persistent focus outlines when activated. High-z-index overlays (like modals at `z-[100]`) require the focusable skip link to have explicit `z-[150]` positioning to remain visible above all components.
+**Action:** Always place skip links first in `<body>` with high z-index and pair with a `<main>` target having `tabindex="-1"` and `focus:outline-none`.
