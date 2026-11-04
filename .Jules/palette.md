@@ -1,0 +1,3 @@
+## 2025-05-18 - Structural Landmark & Skip to Content Pattern
+**Learning:** Monolithic single-page sites with sticky navigation bars make keyboard navigation tedious without bypass mechanisms. Implementing a 'Skip to Content' link paired with a `<main id="main-content" tabindex="-1" class="focus:outline-none">` landmark satisfies WCAG 2.1 SC 2.4.1 (Bypass Blocks) and allows keyboard users to jump directly past repetitive header links while maintaining clean aesthetics and avoiding persistent focus outlines.
+**Action:** When working on landing pages with fixed headers, immediately check for a bypass link and `<main>` landmark. Pair a high-contrast `sr-only focus:not-sr-only focus:fixed` link with `tabindex="-1"` on the landmark target.
