@@ -1,0 +1,3 @@
+## 2024-11-11 - Structural Landmark Pattern & Skip-to-Content Link
+**Learning:** Pairing an accessible 'Skip to Content' link (`focus:fixed`, `z-[150]`) with a `<main id="main-content" tabindex="-1" class="focus:outline-none">` landmark allows keyboard users to bypass extensive fixed headers without leaving persistent focus rings. Pairing `pastel-purple` (#C4A7E7) with `dark-bg` (#0f0f0f) provides WCAG AA compliant contrast (approx. 9.7:1), whereas pastel-purple on white fails accessibility contrast.
+**Action:** When adding skip links in layouts with fixed headers and high-z-index overlays, position the link with high z-index and dark contrast text, pointing to a programmatically focusable `<main>` element kept as a sibling to `<footer>`.
